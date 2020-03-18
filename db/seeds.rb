@@ -46,6 +46,13 @@ bathroom_category = Category.create!(name: "Salle de bain")
 ecological_toothbrush = Item.create!(name: "Brosse à dents écologique", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 4.2, available_quantity: 5, shop: user_1_maker_shop, category: bathroom_category)
 biologic_tisane = Item.create!(name: "Tisane biologique des elfes", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 7, available_quantity: 15, shop: user_1_maker_shop, category: grocery_category)
 handmade_statue = Item.create!(name: "Statue décorative faite à la main", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 35, available_quantity: 1, shop: user_1_maker_shop, category: decoration_category)
+bulk_bags = Item.create!(name: "Sacs à vrac", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 30, available_quantity: 3, shop: user_1_maker_shop, category: grocery_category)
+coat_rack = Item.create!(name: "Porte manteau", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 50, available_quantity: 1, shop: user_1_maker_shop, category: decoration_category)
+earrings = Item.create!(name: "Boucle d'oreille", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 7, available_quantity: 10, shop: user_1_maker_shop, category: grocery_category)
+make_up_remover = Item.create!(name: "Coton démaquillant réutilisable", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 2, available_quantity: 25, shop: user_1_maker_shop, category: bathroom_category)
+wooden_stick = Item.create!(name: "Baguettes", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: 6, available_quantity: 4, shop: user_1_maker_shop, category: grocery_category)
+
+
 
 puts "Shop created and populated."
 

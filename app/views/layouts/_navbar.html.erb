@@ -17,20 +17,21 @@
         </a>
         </li>
     </ul>
-    <ul class="navbar-nav mr-auto">  
-      <a class="navbar-logo">
+    
+      <div class="navbar-logo">
         <%= link_to root_path do %>
             <%= image_tag "logo.png", class: "logo" %>
         <% end %>
-      </a>
-     </ul> 
+      </div>
     
     <div class="dropdown">
-      <ul>
-          <a type="button">
+      <ul class="navbar-nav mr-auto">
+      <li>
+          <a>
             <%= link_to "", edit_user_registration_path, :class=>"fas fa-user" %>
             <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
           </a>
+      </li>
         <% if user_signed_in? %>
           <a>
           <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger" %>

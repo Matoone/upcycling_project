@@ -43,8 +43,8 @@
   </div>
 
   <div class="container mt-4">
-    <% @categories = returnAllCategories %>
-    <% @categories.each do |category| %>
+    
+    <% returnAllCategories.each do |category| %>
       <%= render 'layouts/categories', category: category %>
     <% end %>
   </div>

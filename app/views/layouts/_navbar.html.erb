@@ -1,9 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
- 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
   <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
@@ -22,18 +17,19 @@
         </a>
         </li>
     </ul>
-         <li class="navbar-brand">
-        <a>
-          <%= link_to image_tag("logo.png"), edit_user_registration_path, :class=>"logo" %>
-        </a>
-      </li>
+    <ul class="navbar-nav mr-auto">  
+      <a class="navbar-logo">
+        <%= link_to root_path do %>
+            <%= image_tag "logo.png", class: "logo" %>
+        <% end %>
+      </a>
+     </ul> 
+    
     <div class="dropdown">
       <ul>
           <a type="button">
-          <a>
-            <%= link_to "", edit_user_registration_path,  :class=>"fas fa-user" %>
-          </a>
-           <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
+            <%= link_to "", edit_user_registration_path, :class=>"fas fa-user" %>
+            <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
           </a>
         <% if user_signed_in? %>
           <a>
@@ -45,14 +41,15 @@
         </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a  class="dropdown-item">
-            <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link" %></a>
+              <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link" %>
+            </a>
             <a class="dropdown-item">
-            <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link" %></a>
+             <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link" %>
+            </a>
           </div>
          <% end %>
       </ul>
     </div>
-
-
   </div>
+  
 </nav>

@@ -1,8 +1,9 @@
 /*NAVBAR*/
 
-.navbar-brand {
-  width: 50%;
-  text-align: center;
+.navbar-logo {
+  position: absolute;
+  left: 0%;
+  transform: translatex(-60%);
 }
 
 .logo{
@@ -13,3 +14,4 @@
 .nav-item {
   font-size: larger;
 }
+

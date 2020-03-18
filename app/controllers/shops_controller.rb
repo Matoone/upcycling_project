@@ -1,5 +1,6 @@
 class ShopsController < ApplicationController
   def show
-    @items = Item.all
+    @shop = Shop.find_by(id: params[:id])
+   
   end
 end

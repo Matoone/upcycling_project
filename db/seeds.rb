@@ -21,6 +21,8 @@ Cart.destroy_all
 puts "Carts destroyed"
 CartItem.destroy_all
 puts "CartItems destroyed"
+Category.destroy_all
+puts "Categories destroyed"
 
 puts "Create test user with customer and maker..."
 user_1 = User.create!(email: 'test@example.com', password: "password", password_confirmation: "password")

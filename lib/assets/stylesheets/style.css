@@ -1,0 +1,17 @@
+/*NAVBAR*/
+
+.navbar-logo {
+  position: absolute;
+  left: 0%;
+  transform: translatex(-60%);
+}
+
+.logo{
+  width: 80px;
+  height: 80px;
+}
+
+.nav-item {
+  font-size: larger;
+}
+

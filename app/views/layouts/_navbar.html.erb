@@ -1,40 +1,58 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarColor03">
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor02">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home </a>
-      </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
-      </li>
-      <li class ="nav-item">
-      <i class="fas fa-user"></i>
-      <i class="fas fa-shopping-cart"></i>
-      </li>
-      <li>
-        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Connexion
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">
-              <%= link_to "Se connecter", :class=>"nav-link" %></a>
-            <a class="dropdown-item">
-              <%= link_to "S'inscrire", :class=>"nav-link" %></a>
-          </div>
-          </ul>
-        </div>
-            </div>
-          </div>
-        </div>
-      </li>
+        <a>
+          <%= link_to "Nos Créateurs", edit_user_registration_path, :class=>"nav-link" %>
+        </a>
+        </li>
+         <li class="nav-item">
+        <a>
+          <%= link_to "Catégories", edit_user_registration_path, :class=>"nav-link" %>
+        </a>
+        </li>
+         <li class="nav-item">
+        <a>
+          <%= link_to "Page Admin", edit_user_registration_path,  :class=>"nav-link" %>
+        </a>
+        </li>
     </ul>
+         <li class="navbar-brand">
+        <a>
+          <%= link_to image_tag("logo.png"), edit_user_registration_path, :class=>"logo" %>
+        </a>
+      </li>
+    <div class="dropdown">
+      <ul>
+          <a type="button">
+          <a>
+            <%= link_to "", edit_user_registration_path,  :class=>"fas fa-user" %>
+          </a>
+           <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
+          </a>
+        <% if user_signed_in? %>
+          <a>
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger" %>
+          </a>
+         <% else %>
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         Connexion
+        </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a  class="dropdown-item">
+            <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link" %></a>
+            <a class="dropdown-item">
+            <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link" %></a>
+          </div>
+         <% end %>
+      </ul>
+    </div>
+
 
   </div>
 </nav>

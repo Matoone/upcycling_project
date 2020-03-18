@@ -17,6 +17,10 @@ Item.destroy_all
 puts "Items destroyed"
 Shop.destroy_all
 puts "Shops destroyed"
+Cart.destroy_all
+puts "Carts destroyed"
+CartItem.destroy_all
+puts "CartItems destroyed"
 
 puts "Create test user with customer and maker..."
 user_1 = User.create!(email: 'test@example.com', password: "password", password_confirmation: "password")
@@ -45,3 +49,12 @@ handmade_statue = Item.create!(name: "Statue décorative faite à la main", desc
 
 puts "Shop created and populated."
 
+puts "Create cart for each user_customer"
+user_1_customer_cart = Cart.create!(customer: user_1_customer)
+user_2_customer_cart = Cart.create!(customer: user_2_customer)
+puts "Carts created"
+
+puts "Push items into carts"
+user_1_customer_cart.items.push(Item.all.last)
+user_2_customer_cart.items.push(Item.all.first)
+puts "Pushed one item in each cart"

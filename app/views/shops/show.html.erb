@@ -6,7 +6,7 @@
     <% @items.each do |item| %>
     <div class="col-3 text-center" id="grid-col-<%= item.id %>">
       <h6 class="small-container"><%= item.name %></h6>
-      <%= render 'layouts/card', item: item %>
+      <%= render 'items/card', item: item %>
     </div>
     <% end %>
   </div>

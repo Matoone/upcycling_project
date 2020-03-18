@@ -1,4 +1,4 @@
-/*NAVBAR*/
+/*------- NAVBAR ------*/
 
 .navbar-logo {
   position: absolute;
@@ -15,3 +15,8 @@
   font-size: larger;
 }
 
+/*----- CONTAINERS -----*/
+
+.small-container {
+  min-height: 50px;
+}

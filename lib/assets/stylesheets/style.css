@@ -28,3 +28,11 @@
 .carousel-inner img {
   margin: auto;
 }
+
+/*JUMBOTRON*/
+
+.jumbotron {
+  background-image: url("../../../app/assets/images/image2.jpg");
+  background-size: cover;
+}
+

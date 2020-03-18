@@ -1,36 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="collapse navbar-collapse" id="navbarColor02">
+<nav class="navbar navbar-expand-lg navbar-light bg-light pt-3 d-flex flex-column">
+  <div class="navbar-logo">
+    <%= link_to root_path do %>
+      <%= image_tag "logo.png", class: "logo" %>
+    <% end %>
+  </div>
+
+  <div class="collapse navbar-collapse vw-100 d-flex justify-content-between pr-4 pl-3">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a>
-          <%= link_to "Nos Créateurs", edit_user_registration_path, :class=>"nav-link" %>
-        </a>
-        </li>
-         <li class="nav-item">
-        <a>
-          <%= link_to "Catégories", edit_user_registration_path, :class=>"nav-link" %>
-        </a>
-        </li>
-         <li class="nav-item">
-        <a>
-          <%= link_to "Page Admin", edit_user_registration_path,  :class=>"nav-link" %>
-        </a>
-        </li>
+        <%= link_to "Page Admin", edit_user_registration_path,  :class=>"nav-link" %>
+      </li>
     </ul>
-    
-      <div class="navbar-logo">
-        <%= link_to root_path do %>
-            <%= image_tag "logo.png", class: "logo" %>
-        <% end %>
-      </div>
-    
-    <div class="dropdown">
-      <ul class="navbar-nav mr-auto">
-      <li>
-          <a>
-            <%= link_to "", edit_user_registration_path, :class=>"fas fa-user" %>
-            <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
-          </a>
+
+    <div class="dropdown p-1">
+      <ul class="navbar-nav mr-auto d-flex align-items-center">
+      <li class="m-1">
+        <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart fa-2x" %>
+      </li>
+      <li class="m-1">
+        <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
       </li>
         <% if user_signed_in? %>
           <a>
@@ -45,12 +33,20 @@
               <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link" %>
             </a>
             <a class="dropdown-item">
-             <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link" %>
+              <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link" %>
             </a>
           </div>
-         <% end %>
+        <% end %>
       </ul>
     </div>
+
   </div>
-  
+
+  <div class="container mt-4">
+    <% @categories = returnAllCategories %>
+    <% @categories.each do |category| %>
+      <%= render 'layouts/categories', category: category %>
+    <% end %>
+  </div>
+
 </nav>

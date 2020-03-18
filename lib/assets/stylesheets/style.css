@@ -19,6 +19,8 @@
 
 .small-container {
   min-height: 50px;
+  min-width: 200px;
+  text-align: center;
 }
 
 /*------ CAROUSEL ------*/

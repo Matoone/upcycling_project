@@ -3,13 +3,11 @@
     <h1><%= @category.name %></h1>
   </div>
   <div class="row mb-3">
-    <% @items.each do |item| %>
-      <% if item.category == @category %>
+    <% @category.items.each do |item| %>
         <div class="col-3 text-center" id="grid-col-<%= item.id %>">
           <h6 class="small-container"><%= item.name %></h6>
           <%= render 'items/card', item: item %>
         </div>
-      <% end %>
     <% end %>
   </div>
 </div>

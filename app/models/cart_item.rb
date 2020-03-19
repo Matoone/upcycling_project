@@ -3,4 +3,7 @@ class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :item
 
+  def return_total_price
+    self.item.price * self.cart_quantity
+  end
 end

@@ -1,0 +1,12 @@
+<div>
+<%= @items.length%> Types d'objets différents
+<% @items.each do |cart_item| %>
+  <%= cart_item.cart_quantity %> Objets de nom :  <%= cart_item.item.name %> prix individuel de l'objet : <%= cart_item.item.price %> prix total des <%= cart_item.cart_quantity %> objets: <%= cart_item.return_total_price %>
+<% end %>
+Prix total du panier: <%= @items_total_price %>
+Nom du shop: <%= @shop.name%>
+Adresse du maker: <%= @shop.maker.address.complete_address%>
+ Adresse du client: <%=  %>
+//  l'adresse de customer n'est pas encore créée car on n'a pas le formulaire mais ce sera : current_user.customer.address
+
+</div>

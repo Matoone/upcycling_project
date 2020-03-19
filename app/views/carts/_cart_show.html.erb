@@ -1,28 +1,18 @@
 <div class="row justify-content-center mb-5 mt-3"> <h1>Mon Panier </h1>
   <div class="container row">
-    <% cart.cart_items.each do |cart_item| %>
-      <div class="col-sm mr-1">
-      <i class="fas fa-trash ml-5 mt-5"></i>
-    </div>
-
-    <div class="col-sm mr-3"> 
-      <img src="data:image/jpeg;base64,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" alt="" />
-    </div>
-
-    <div class="col-sm mr-3">
-      <h4> <%= cart_item.item.name %> </h4>
-      <p> <%= cart_item.item.description %> </p>
-    </div>
-
-    <div class="col-sm mr-4 mt-5 row">
-      <i class="fas fa-plus-square mt-2 mr-3"></i>
-      <h4>Quantité: <%= cart_item.cart_quantity %></h4>
-      <i class="fas fa-minus-square mt-2 ml-3"></i>
-    </div>
-
-    <div class="col-sm mr-2">
-    <h4 class="mt-5 mr-3"> <%= cart_item.item.price %> </h4>
-    </div>
+    <% cart.cart_sections.each do |cart_section_key, cart_session_value| %>
+    <% shop = Shop.find_by(id: cart_section_key.to_i)%>
+     <div class="cart-section-container">
+      <h3>Shop: <%=shop.name%></h3>
+      <% cart_session_value.each do |cart_item| %>
+        <div class="cart-item-container">
+          <h4><%=cart_item.item.name%></h4>
+          <div><%=cart_item.cart_quantity%></div>
+          
+        </div>
+      <% end %>
+      <%= link_to "Commander les objets de #{shop.name}", new_order_path(:cart_id => cart.id, :section_id => cart_section_key.to_i), :class => "ml-3 btn btn-success" %>
+     </div>
     <% end %>
     
 

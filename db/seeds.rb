@@ -26,7 +26,7 @@ puts "Categories destroyed"
 
 puts "Create test user with customer and maker..."
 user_1 = User.create!(email: 'test@example.com', password: "password", password_confirmation: "password")
-user_1_customer = Customer.create!(user: user_1)
+
 user_1_maker = Maker.create!(user: user_1, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) )
 puts "Done. Use 'test@example.com' as login and 'password' as password"
 
@@ -36,10 +36,10 @@ puts "Setting address to user_1_maker"
 user_2_address = Address.create!(first_name: "Paul", last_name: "Mauvais", address_line_1: "La Bouillonnaise", zip_code: "34540", city: "Bouilloux", maker: user_1.maker)
 puts "Creating test user with only customer..."
 user_2 = User.create!(email: 'test2@example.com', password: "password", password_confirmation: "password")
-user_2_customer = Customer.create!(user: user_2)
+
 puts "Done. Use 'test2@example.com' as login and 'password' as password"
 puts "Creating test user_maker_shop and populating a few categories and items..."
-user_1_maker_shop = Shop.create!(maker: user_1_maker)
+user_1_maker_shop = Shop.create!(maker: user_1.maker)
 
 grocery_category = Category.create!(name: "Epicerie")
 decoration_category = Category.create!(name: "Décoration")
@@ -58,12 +58,7 @@ wooden_stick = Item.create!(name: "Baguettes", description: Faker::Lorem.paragra
 
 puts "Shop created and populated."
 
-puts "Create cart for each user_customer"
-user_1_customer_cart = Cart.create!(customer: user_1_customer)
-user_2_customer_cart = Cart.create!(customer: user_2_customer)
-puts "Carts created"
-
 puts "Push items into carts"
-user_1_customer_cart.items.push(Item.all.last)
-user_2_customer_cart.items.push(Item.all.first)
+user_1.customer.cart.items.push(Item.all.last)
+user_2.customer.cart.items.push(Item.all.first)
 puts "Pushed one item in each cart"

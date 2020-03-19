@@ -29,11 +29,11 @@
       </li>
         <% if user_signed_in? %>
           <a>
-          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger " %>
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger" %>
           </a>
          <% else %>
         <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x " %>
+         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
         </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a  class="dropdown-item">

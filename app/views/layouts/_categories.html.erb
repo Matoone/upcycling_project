@@ -1,5 +1,3 @@
 <div class="container justify-content-center">
-    <ul class="navbar-nav">
-  <%= link_to category.name, category_path(category.id), :class=>"nav-link  " %>
-  </ul>
+  <%= link_to category.name, category_path(category.id), :class=>"nav-link dropdown-toggle" %>
 </div>

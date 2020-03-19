@@ -15,7 +15,7 @@
     <div class="dropdown p-1">
       <ul class="navbar-nav mr-auto d-flex align-items-center">
       <li class="m-1">
-        <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart fa-2x" %>
+        <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart fa-2x success" %>
       </li>
       <li class="m-1">
         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="container mt-4">
-    
+
     <% returnAllCategories.each do |category| %>
       <%= render 'layouts/categories', category: category %>
     <% end %>

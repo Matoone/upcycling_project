@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "faker"
+puts "Destroy orders"
+OrderItem.destroy_all
+Order.destroy_all
+puts "Orders destroyed"
 puts "Destroy all users..."
 User.destroy_all
 puts "Users destroyed"
@@ -23,6 +27,7 @@ CartItem.destroy_all
 puts "CartItems destroyed"
 Category.destroy_all
 puts "Categories destroyed"
+
 
 puts "Create test user with customer and maker..."
 user_1 = User.create!(email: 'test@example.com', password: "password", password_confirmation: "password")
@@ -62,3 +67,7 @@ puts "Push items into carts"
 user_1.customer.cart.items.push(Item.all.last)
 user_2.customer.cart.items.push(Item.all.first)
 puts "Pushed one item in each cart"
+puts "Create fake order"
+  Order.create!(stripe_customer_id: Faker::Code.imei, customer_id: user_2.customer.id, shop_id: user_1.maker.shop.id)
+  puts "Done"
+

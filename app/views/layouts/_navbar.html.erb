@@ -20,20 +20,20 @@
     <div class="dropdown p-1">
       <ul class="navbar-nav mr-auto d-flex align-items-center">
       <li class="m-1">
-          <button class="btn btn-outline-info cart" type="button"> Panier        
+          <button class="btn btn-outline-info cart" type="button"> Panier
         <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
           </button>
       </li>
       <li class="m-1">
-        
+
       </li>
         <% if user_signed_in? %>
           <a>
-          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger " %>
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger" %>
           </a>
          <% else %>
-        <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">         
-         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x " %>
+        <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
         </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a  class="dropdown-item">
@@ -46,13 +46,12 @@
         <% end %>
       </ul>
     </div>
-
   </div>
 
   <div class="container mt-4">
-       <% returnAllCategories.each do |category| %>
-       <%= render 'layouts/categories', category: category %>
-     <% end %>
+    <% returnAllCategories.each do |category| %>
+      <%= render 'layouts/categories', category: category %>
+    <% end %>
   </div>
 
 </nav>

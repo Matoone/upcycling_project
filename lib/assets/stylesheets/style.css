@@ -15,11 +15,21 @@
   font-size: larger;
 }
 
+.loggedin {
+  color: #14ca61;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.cart {
+  color: black;
+}
+
 /*----- CONTAINERS -----*/
 
-.small-container {
-  min-height: 50px;
-  min-width: 200px;
+.item-card-container {
+  min-width: 100px;
+  max-width: 250px;
   text-align: center;
 }
 
@@ -35,4 +45,3 @@
   background-image: url("../../../app/assets/images/image2.jpg");
   background-size: cover;
 }
-

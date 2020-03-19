@@ -19,11 +19,14 @@
 
     <div class="dropdown p-1">
       <ul class="navbar-nav mr-auto d-flex align-items-center">
+      <% if user_signed_in? %>
       <li class="m-1">
-          <button class="btn btn-outline-info cart" type="button"> Panier
-        <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
-          </button>
+          
+        <%= link_to "Panier", cart_path(current_user.customer.cart), :class=>"btn btn-outline-info cart" %> 
+         <%# fas fa-shopping-cart  %>
+          
       </li>
+       <% end %>
       <li class="m-1">
 
       </li>

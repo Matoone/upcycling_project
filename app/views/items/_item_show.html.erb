@@ -25,14 +25,15 @@
 
   <div class="col-sm">
     <h1 class="card-title"> <%= item.name %> </h1>
-    <p class="card-text"> Nom du vendeur/shop</p>
-    <p ul class="card-text"> Description de l'item :
-    <li>Taille</li>
-    <li>Matière</li>
-    <li>Infos d'entretien</li>
+    <%# <p class="card-text"> <%= shop.name %> </p>
+    <p ul class="card-text"> <%= item.description %>
+    <%# <li><%= item.size %></li>
+    <%# <li><%= item.matter %></li>
+    <%# <li><%= item.maintenance %> </li>
     </ul></p>
+    <p> Quantité : <%= item.available_quantity %> </p>
     <p class="card-text"><small class="text-muted"></small></p>
-    <p>Prix :<small class="text-muted">15,50€</small></p>
+    <p>Prix :<small class="text-muted"> <%= item.price %> € </small></p>
     <button class="primary"> Ajouter au panier </button>
   </div>
 

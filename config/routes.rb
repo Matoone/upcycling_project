@@ -6,5 +6,6 @@ Rails.application.routes.draw do
 
   resources :shops
   resources :categories
+  resources :items, only: [:show]
 
 end

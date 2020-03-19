@@ -92,6 +92,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { :host => 'https://test-chaton.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://test-upcycling-mailer.herokuapp.com/' }
   config.action_mailer.delivery_method = :mailjet_api
 end

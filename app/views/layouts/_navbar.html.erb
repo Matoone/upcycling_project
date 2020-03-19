@@ -7,26 +7,33 @@
 
   <div class="collapse navbar-collapse vw-100 d-flex justify-content-between pr-4 pl-3">
     <ul class="navbar-nav mr-auto">
+     <li class="nav-item">
+        <%= link_to "Nos créateurs", edit_user_registration_path,  :class=>"nav-link" %>
+      </li>
+    <% if user_signed_in? %>
       <li class="nav-item">
         <%= link_to "Page Admin", edit_user_registration_path,  :class=>"nav-link" %>
       </li>
+      <% end %>
     </ul>
 
     <div class="dropdown p-1">
       <ul class="navbar-nav mr-auto d-flex align-items-center">
       <li class="m-1">
-        <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart fa-2x success" %>
+          <button class="btn btn-outline-info cart" type="button"> Panier        
+        <%= link_to "", edit_user_registration_path, :class=>"fas fa-shopping-cart" %>
+          </button>
       </li>
       <li class="m-1">
-        <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
+
       </li>
         <% if user_signed_in? %>
           <a>
-          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger" %>
+          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger " %>
           </a>
          <% else %>
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         Connexion
+        <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x " %>
         </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a  class="dropdown-item">

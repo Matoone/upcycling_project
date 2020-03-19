@@ -27,13 +27,13 @@ puts "Categories destroyed"
 puts "Create test user with customer and maker..."
 user_1 = User.create!(email: 'test@example.com', password: "password", password_confirmation: "password")
 user_1_customer = Customer.create!(user: user_1)
-user_1_maker = Maker.create!(user: user_1, first_name: "Jean", last_name: "Bon", description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) )
+user_1_maker = Maker.create!(user: user_1, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) )
 puts "Done. Use 'test@example.com' as login and 'password' as password"
 
 puts "Setting address to user_1_customer..."
-user_1_address = Address.create!(street_number: "42", address_line_1: "rue des gros vilains", zip_code: "69100", city: "Lyon", customer: user_1.customer)
+user_1_address = Address.create!(first_name: "Jean", last_name: "Bon", street_number: "42", address_line_1: "rue des gros vilains", zip_code: "69100", city: "Lyon", customer: user_1.customer)
 puts "Setting address to user_1_maker"
-user_2_address = Address.create!(address_line_1: "La Bouillonnaise", zip_code: "34540", city: "Bouilloux", maker: user_1.maker)
+user_2_address = Address.create!(first_name: "Paul", last_name: "Mauvais", address_line_1: "La Bouillonnaise", zip_code: "34540", city: "Bouilloux", maker: user_1.maker)
 puts "Creating test user with only customer..."
 user_2 = User.create!(email: 'test2@example.com', password: "password", password_confirmation: "password")
 user_2_customer = Customer.create!(user: user_2)

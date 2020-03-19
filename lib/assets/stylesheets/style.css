@@ -15,6 +15,16 @@
   font-size: larger;
 }
 
+.loggedin {
+  color: #14ca61;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.cart {
+  color: black;
+}
+
 /*----- CONTAINERS -----*/
 
 .small-container {

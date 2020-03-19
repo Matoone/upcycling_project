@@ -15,14 +15,14 @@ class CartsController < ApplicationController
     when "add"
       @cart.add_item(params[:item_id])
       flash[:sucess] = "L'objet' a été ajouté au panier."
-      redirect_to cart_path(@cart.id)
+      redirect_back(fallback_location: root_path)
     when "remove"
       @cart.remove_item(params[:item_id])
       flash[:sucess] = "L'objet a été supprimé du panier."
-      redirect_to cart_path(@cart.id)
+      redirect_back(fallback_location: root_path)
     else
       flash[:error] = "L'opération n'existe pas."
-      redirect_to cart_path(@cart.id)
+      redirect_back(fallback_location: root_path)
     end
   end
 end

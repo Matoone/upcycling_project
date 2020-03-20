@@ -54,6 +54,11 @@ class Cart < ApplicationRecord
     return price
   end
 
+  def remove_all_items_from_section(shop_id)
+    self.cart_sections["#{shop_id}"].each do |cart_item|
+      self.cart_items.find_by(id: cart_item.id).destroy
+    end
+  end
   
   # def order_cart_section(shop_id)
   #   if self.cart_sections["#{shop_id}"]

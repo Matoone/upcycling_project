@@ -12,6 +12,8 @@ Adresse du maker: <%= @shop.maker.address.complete_address%>
 </div>
 
 <%= form_tag orders_path do %>
+
+
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -20,14 +22,16 @@ Adresse du maker: <%= @shop.maker.address.complete_address%>
     <% end %>
     <label class="amount">
     <br>
-      <span> La somme suivante sera prélevée: <%=@cart.return_section_total_price(@section_id)%> €</span>
+      <span> La somme suivante sera prélevée: <%=@items_total_price%> €</span>
     </label>
+    <%= hidden_field_tag('total_price', @items_total_price) %>
+    <%= hidden_field_tag('shop_id', @shop.id) %>
   </article>
-
+   
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<%= @cart.items.length %> produits"
-          data-amount="<%=@cart.return_section_total_price(@section_id) * 100%>"
+          data-description="Objets de l'atelier des nouveaux designs"
+          data-amount="<%=(@items_total_price * 100).to_i%>"
           data-locale="fr"
           data-currency="eur">
           </script>

@@ -45,7 +45,7 @@
       <br>
       <% if current_user.customer.address %> <!-- The address is already created and we want to update it -->
       <h1 class="h3 mb-3 font-weight-normal text-center">Modifiez votre adresse de livraison</h1>
-        <%= form_for current_user.customer, :url => address_path(current_user.id) do |f| %>
+        <%= form_with model: @address, url: address_path(current_user.id), method: "put" do |f| %>
           <%= render 'addresses/customer_address_form', f: f %>
         <% end %>
 
@@ -63,9 +63,3 @@
     </div>
   </div>
 </div>
-
-t.string "street_number"
-t.string "address_line_1"
-t.string "address_line_2"
-t.string "zip_code"
-t.string "city"

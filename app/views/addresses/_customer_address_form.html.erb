@@ -1,22 +1,57 @@
-  <%= f.label :prénom %>
-  <%= f.text_field :first_name, class: "form-control" %>
+<div class="row">
+  <div class="col-6">
+    <%= f.label :prénom %>
+  </div>
+  <div class="col-6">
+    <%= f.label :nom %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+  <div class="col-6">
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+</div>
 
-  <%= f.label :nom %>
-  <%= f.text_field :last_name, class: "form-control" %>
+<%= f.label :complément %>
+<%= f.text_field :address_line_1, class: "form-control" %>
 
-  <%= f.label :n°_de_rue %>
-  <%= f.text_field :street_number, class: "form-control" %>
+<div class="row">
+  <div class="col-3">
+    <%= f.label :n° %>
+  </div>
+  <div class="col-9">
+    <%= f.label :adresse %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-3">
+    <%= f.text_field :street_number, class: "form-control" %>
+  </div>
+  <div class="col-9">
+    <%= f.text_field :address_line_2, class: "form-control" %>
+  </div>
+</div>
 
-  <%= f.label :complément %>
-  <%= f.text_field :address_line_1, class: "form-control" %>
+<div class="row">
+  <div class="col-6">
+    <%= f.label :code_postal %>
+  </div>
+  <div class="col-6">
+    <%= f.label :ville %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    <%= f.text_field :zip_code, class: "form-control" %>
+  </div>
+  <div class="col-6">
+    <%= f.text_field :city, class: "form-control" %>
+  </div>
+</div>
 
-  <%= f.label :adresse %>
-  <%= f.text_field :address_line_2, class: "form-control" %>
-
-  <%= f.label :code_postal %>
-  <%= f.text_field :zip_code, class: "form-control" %>
-
-  <%= f.label :ville %>
-  <%= f.text_field :city, class: "form-control" %>
-
-  <%= f.submit "Valider" %>
+<div class="actions mt-5">
+  <%= f.submit "Valider", class: "btn btn-lg btn-info btn-block" %>
+</div>

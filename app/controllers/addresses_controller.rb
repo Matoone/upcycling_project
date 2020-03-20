@@ -23,6 +23,8 @@ class AddressesController < ApplicationController
     end
   end
 
+  private
+  
   def address_permitted_params
     params.permit(:first_name, :last_name, :street_number, :address_line_1, :address_line_2, :zip_code, :city)
   end

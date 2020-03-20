@@ -3,8 +3,9 @@
   <% cart.cart_sections.each do |cart_section_key, cart_session_value| %>
   <div class="d-flex flex-column bd-highlight ">
     <% shop = Shop.find_by(id: cart_section_key.to_i)%>
-     <div>Shop: <%=shop.name%></div>
-
+     <div>
+      Shop: <%=shop.name%>
+     </div>
      <div class="cart-section-container d-flex flex-row border border-primary justify-content-between">
       <% cart_session_value.each do |cart_item| %>
         <div class="cart-item-container p-2 bd-highlight justify-content-center">

@@ -53,7 +53,7 @@ end
 puts "Create test users with customer only..."
 30.times do |i|
   user = User.create!(email: Faker::Internet.email, password: "password", password_confirmation: "password")
-  customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
+  customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, address_line_1: "étage " + i, address_line_2: "rue " + Faker::Address.street_name, street_number: Faker::Number.within(range: 1..150).to_s, zip_code: "69100", city: "Villeurbanne", customer: user.customer)
 end
 
 
@@ -77,4 +77,3 @@ end
 
 #   Order.create!(stripe_customer_id: Faker::Code.imei, customer_id: Customer.all.last.id, shop_id: user_1.maker.shop.id)
 #   puts "Done"
-

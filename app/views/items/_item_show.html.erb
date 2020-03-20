@@ -24,24 +24,24 @@
   </div>
 
   <div class="col-sm">
-    <h1 class="card-title"> <%= item.name %> </h1>
-    <%# <p class="card-text"> <%= shop.name %> </p>
+    <h1 class="card-title"> <%= item.shop.name %> |  </h1>
+    <h2 class="card-title"> <%= item.name %> </h2>
     <p ul class="card-text"> <%= item.description %>
     <%# <li><%= item.size %></li>
     <%# <li><%= item.matter %></li>
     <%# <li><%= item.maintenance %> </li>
     </ul></p>
     <p> Quantité : <%= item.available_quantity %> </p>
-    <p class="card-text"><small class="text-muted"></small></p>
-    <p>Prix :<small class="text-muted"> <%= item.price %> € </small></p>
+    <p class="card-text"> Prix : <%= item.price %> € </p>
     <%# <button class="primary"> Ajouter au panier </button> %>
     <% if user_signed_in? %>
       <% if is_item_quantity_sufficient_to_add_another_to_cart(item.id) == true %>
-         <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-info btn-lg", params: {item_id: item.id, operation: "add"} %>
+         <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-primary", params: {item_id: item.id, operation: "add"} %>
       <% else %>
           <button class="btn btn-warning btn-lg" disabled>Epuisé</button>
       <% end %>
-     
+    <% else %> 
+      <%= link_to "Se connecter pour ajouter au panier", new_user_registration_path, :class => "btn btn-info" %>
     <% end %>
   </div>
 

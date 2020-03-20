@@ -7,14 +7,17 @@
 
   <div class="collapse navbar-collapse vw-100 d-flex justify-content-between pr-4 pl-3">
     <ul class="navbar-nav mr-auto">
-     <li class="nav-item">
-        <%= link_to "Nos créateurs", edit_user_registration_path,  :class=>"nav-link" %>
-      </li>
-    <% if user_signed_in? %>
-      <li class="nav-item">
-        <%= link_to "Page Admin", edit_user_registration_path,  :class=>"nav-link" %>
-      </li>
+     <%# <li class="nav-item">
+        <%= link_to "Nos créateurs", edit_user_registration_path,  :class=>"nav-link" 
+      </li> %>
+   
+    <% if user_signed_in? && current_maker %>
+      <% if current_maker.shop %>
+        <li>
+          <%= link_to "Page d'administration du shop", edit_shop_path(current_maker.shop.id), :class=>"nav-link"%>
+        </li>
       <% end %>
+    <% end %>
     </ul>
 
     <div class="dropdown p-1">

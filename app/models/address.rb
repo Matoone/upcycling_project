@@ -8,7 +8,7 @@ class Address < ApplicationRecord
   belongs_to :customer, optional: true
 
   def complete_address
-    self.first_name + " " + self.last_name + " " + self.address_line_1 + " " + " " + self.zip_code + " " + self.city 
+    self.first_name + " " + self.last_name + " " + self.address_line_1 + " " + " " + self.zip_code + " " + self.city
     # will have to add addrees_line_2 and set default to ""
   end
 end

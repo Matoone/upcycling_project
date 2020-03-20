@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   resources :shops
   resources :categories
   resources :carts
-  resources :items, only: [:show]
+  resources :items, only: [:show, :edit, :update, :destroy, :new, :create]
   resources :orders
+  resources :makers do
+    post 'new_maker_email'
+  end
 
+  resources :addresses, only: [:create, :update]
 
 end

@@ -11,7 +11,7 @@ Adresse du maker: <%= @shop.maker.address.complete_address%>
 
 </div>
 
-<%= form_tag carts_path do %>
+<%= form_tag orders_path do %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -19,13 +19,16 @@ Adresse du maker: <%= @shop.maker.address.complete_address%>
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $5.00</span>
+    <br>
+      <span> La somme suivante sera prélevée: <%=@cart.return_section_total_price(@section_id)%> €</span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
-          data-amount="500"
-          data-locale="auto"></script>
+          data-description="<%= @cart.items.length %> produits"
+          data-amount="<%=@cart.return_section_total_price(@section_id) * 100%>"
+          data-locale="fr"
+          data-currency="eur">
+          </script>
 <% end %>

@@ -9,22 +9,24 @@ class OrdersController < ApplicationController
   
   def create
     # Amount in cents
-    @amount = 500
+    total_price = return_section_total_price(shop_id)
+    @amount = (@items_total_price * 100).to_i
   
     customer = Stripe::Customer.create({
-      email: params[:stripeEmail],
+      email: current_user.email,
       source: params[:stripeToken],
     })
   
     charge = Stripe::Charge.create({
       customer: customer.id,
       amount: @amount,
-      description: 'Rails Stripe customer',
-      currency: 'usd',
+      description: 'produits',
+      currency: 'eur',
     })
   
   rescue Stripe::CardError => e
     flash[:error] = e.message
-    redirect_to orders_path
+    redirect_to new_order_path
   end
+  
 end

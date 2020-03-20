@@ -3,4 +3,8 @@ class ShopsController < ApplicationController
     @shop = Shop.find_by(id: params[:id])
    
   end
+
+  def edit
+    @shop = Shop.find_by(id: params[:id])
+  end
 end

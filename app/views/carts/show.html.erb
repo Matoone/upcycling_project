@@ -1,7 +1,8 @@
 <h1 class="text-center">Mon Panier </h1>
 
 <% @cart.cart_sections.each do |cart_section_key, cart_session_value| %>
-  <div class="d-flex flex-column bd-highlight ">
-    <%= render 'cart_show', key: cart_section_key, value: cart_session_value, @cart: @cart %>
+  <div class="d-flex flex-column bd-highlight container">
+    <%= render 'cart_show', key: cart_section_key, value: cart_session_value %>
+    <%= link_to "Commander", new_order_path(:cart_id => @cart.id, :section_id => cart_section_key.to_i), :class => "ml-3 btn btn-success align-self-center float-right" %>
   </div>
 <% end %>

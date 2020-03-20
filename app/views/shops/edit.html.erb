@@ -5,7 +5,7 @@
     <h1>Nos articles</h1>
   </div>
   <div class="row justify-content-center mb-5 mt-1" >
-    <%= link_to "Ajouter des produits à ma boutique", shop_path, :class=>"fas fa-store" %>
+    <%= link_to "Ajouter un produit à ma boutique", new_item_path(:shop_id => @shop.id), :class=>"fas fa-store" %>
   </div>
   <div class="row mb-3">
     <% @shop.items.each do |item| %>

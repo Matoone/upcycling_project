@@ -3,15 +3,10 @@ class AddressesController < ApplicationController
     @address = Address.new(address_permitted_params)
     current_user.customer.address = @address
     if current_user.customer.save
-      puts "-" * 30
-      puts "yeah"
-      p @address
-      puts "-" * 30
-      redirect_to '/users/edit'
+      flash[:success] = "Votre adresse a bien été créée."
+      redirect_to edit_user_registration_path
     else
-      puts "-" * 30
-      puts "nop"
-      puts "-" * 30
+      flash[:error] = "Not working"
       render '/users/edit'
     end
   end
@@ -20,14 +15,11 @@ class AddressesController < ApplicationController
     @address = current_user.customer.address
     @address = address_permitted_params
     if current_user.customer.save
-      puts "-" * 30
-      puts "yeah"
-      p @address
-      puts "-" * 30
+      flash[:success] = "Votre adresse a bien été mise à jour."
+      redirect_to edit_user_registration_path
     else
-      puts "-" * 30
-      puts "nop"
-      puts "-" * 30
+      flash[:error] = "Not working"
+      render '/users/edit'
     end
   end
 

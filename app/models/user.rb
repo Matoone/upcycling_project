@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   after_create do
     create_customer
-    #welcome_send
+    welcome_send
   end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

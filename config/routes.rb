@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   resources :carts
   resources :items, only: [:show]
 
+  resources :addresses, only: [:create, :update]
 
 end

@@ -1,1 +1,7 @@
-<%= render 'cart_show', cart: @cart %>
+<h1 class="text-center">Mon Panier </h1>
+
+<% @cart.cart_sections.each do |cart_section_key, cart_session_value| %>
+  <div class="d-flex flex-column bd-highlight ">
+    <%= render 'cart_show', key: cart_section_key, value: cart_session_value, @cart: @cart %>
+  </div>
+<% end %>

@@ -32,9 +32,11 @@ Category.destroy_all
 puts "Categories destroyed"
 
 puts "Create a few categories..."
-grocery_category = Category.create!(name: "Epicerie")
-decoration_category = Category.create!(name: "Décoration")
-bathroom_category = Category.create!(name: "Salle de bain")
+fashion_category = Category.create!(name: "Mode")
+home_category = Category.create!(name: "Maison")
+lifestyle_category = Category.create!(name: "Vie Quotidienne")
+child_category = Category.create!(name: "Enfant")
+
 
 
 puts "Create test users with customer and maker, shop and items..."
@@ -54,6 +56,7 @@ puts "Create test users with customer only..."
 30.times do |i|
   user = User.create!(email: Faker::Internet.email, password: "password", password_confirmation: "password")
   customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
+  user.save
 end
 
 
@@ -77,4 +80,3 @@ end
 
 #   Order.create!(stripe_customer_id: Faker::Code.imei, customer_id: Customer.all.last.id, shop_id: user_1.maker.shop.id)
 #   puts "Done"
-

@@ -10,3 +10,29 @@ Adresse du maker: <%= @shop.maker.address.complete_address%>
 //  l'adresse de customer n'est pas encore créée car on n'a pas le formulaire mais ce sera : current_user.customer.address
 
 </div>
+
+<%= form_tag orders_path do %>
+
+
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <label class="amount">
+    <br>
+      <span> La somme suivante sera prélevée: <%=@items_total_price%> €</span>
+    </label>
+    <%= hidden_field_tag('total_price', @items_total_price) %>
+    <%= hidden_field_tag('shop_id', @shop.id) %>
+  </article>
+   
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="Objets de l'atelier des nouveaux designs"
+          data-amount="<%=(@items_total_price * 100).to_i%>"
+          data-locale="fr"
+          data-currency="eur">
+          </script>
+<% end %>

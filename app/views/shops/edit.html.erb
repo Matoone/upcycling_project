@@ -9,18 +9,20 @@
   </div>
   <div class="row mb-3">
     <% @shop.items.each do |item| %>
-    <div class="col-3 text-center" id="grid-col-<%= item.id %>">
-      <h6 class="small-container"><%= item.name %></h6>
-      <%= render 'items/card', item: item %>
-      <div class="column">
-        <button type="button" class="btn btn-success mb-3">Modifier mon produit</button>
-        <h5>Ajuster mon stock</h5>
-        <p><i class="fas fa-minus-square "></i>
-        <%= item.available_quantity %>
-        <i class="fas fa-plus-square "></i> </p>
-        <button type="button" class="btn btn-danger mb-3">Retirer de ma boutique</button>
-      </div>
-    </div>
+      <% if !item.is_archived %>
+        <div class="col-3 text-center" id="grid-col-<%= item.id %>">
+          <h6 class="small-container"><%= item.name %></h6>
+          <%= render 'items/card', item: item %>
+          <div class="column">
+            <%= link_to "Modifier le produit", edit_item_path(item.id), :class => "btn btn-info mb-3"%>
+            <h5>Ajuster mon stock</h5>
+            <%= render 'items/plus_minus_quantity_available', item: item %>
+            <%= button_to "Archiver cet objet", item_path(item.id), :method => :delete, :class => "btn btn-danger mb-3" %>
+          
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
+<%# <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-info btn-lg", params: {item_id: item.id, operation: "add"} %>%>

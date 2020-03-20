@@ -15,4 +15,5 @@ class Item < ApplicationRecord
     self.available_quantity += quantity
     self.save
   end
+
 end

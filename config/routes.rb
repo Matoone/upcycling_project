@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :shops
   resources :categories
   resources :carts
-  resources :items, only: [:show]
+  resources :items, only: [:show, :edit, :update, :destroy]
   resources :orders
 
   resources :addresses, only: [:create, :update]

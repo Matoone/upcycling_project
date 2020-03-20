@@ -1,0 +1,19 @@
+<div class="col-6 container ">
+<h2 class= "p-4 text-center">Ouvrir un compte artisan</h2>
+
+ <%= form_with model: @maker, url: maker_path(current_user.id), method: "put" do |f| %>
+  <div class="field m-3">
+    <%= f.label :prénom %>
+    <%= f.text_field :first_name, autofocus: true, autocomplete: "prénom", class: "form-control" %>
+  </div>
+
+  <div class="field m-3">
+    <%= f.label :nom %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="actions mt-5">
+    <%= f.submit "Valider", class: "btn btn-lg btn-info btn-block" %>
+  </div>
+  <%end%>
+</div>

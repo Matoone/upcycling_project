@@ -15,7 +15,13 @@
   </head>
 
   <%= render 'layouts/navbar'%>
-  
+  <div class="container col-6">
+  <% flash.each do |key, value| %>
+      <div class="<%= flash_class(key) %>" role="alert">
+        <%= value %>
+      </div>
+    <% end %>
+  </div>
   <body>
     <%= yield %>
   </body>

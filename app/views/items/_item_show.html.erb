@@ -36,7 +36,12 @@
     <p>Prix :<small class="text-muted"> <%= item.price %> € </small></p>
     <%# <button class="primary"> Ajouter au panier </button> %>
     <% if user_signed_in? %>
-    <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-info btn-lg", params: {item_id: item.id, operation: "add"} %>
+      <% if is_item_quantity_sufficient_to_add_another_to_cart(item.id) == true %>
+         <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-info btn-lg", params: {item_id: item.id, operation: "add"} %>
+      <% else %>
+          <button class="btn btn-warning btn-lg" disabled>Epuisé</button>
+      <% end %>
+     
     <% end %>
   </div>
 

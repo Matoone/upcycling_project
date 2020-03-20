@@ -33,4 +33,39 @@ class Cart < ApplicationRecord
     self.cart_items.find_by(item_id: item_id)
   end
 
+  def cart_sections
+    sections = {}
+    self.cart_items.each do |cart_item|
+      if sections["#{cart_item.item.shop.id}"]
+        sections["#{cart_item.item.shop.id}"].push(cart_item)
+      else
+       sections["#{cart_item.item.shop.id}"] = []
+       sections["#{cart_item.item.shop.id}"].push(cart_item)
+      end
+    end
+    return sections
+  end
+
+  def return_section_total_price(shop_id)
+    price = 0
+    cart_sections["#{shop_id}"].each do |cart_item|
+      price += cart_item.return_total_price
+    end
+    return price
+  end
+
+  
+  # def order_cart_section(shop_id)
+  #   if self.cart_sections["#{shop_id}"]
+  #     order = Order.create
+  #     self.cart_sections["#{shop_id}"].each do |cart_item|
+  #       ordered_quantity = cart_item.cart_quantity
+  #       OrderItem.create(order_id: self.id, item_id: cart_item.item.id, buying_price: cart_item.item.price, order_quantity: ordered_quantity)
+  #       item_to_decrement = Item.find_by(id: cart_item.item.id)
+  #       item_to_decrement.decrement_available_quantity(ordered_quantity)
+  #     end
+  #   end
+    
+  # end
+
 end

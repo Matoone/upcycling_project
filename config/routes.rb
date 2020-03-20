@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   resources :carts
   resources :items, only: [:show]
   resources :orders
-  resources :makers
+  resources :makers do
+    post 'new_maker_email'
+  end
 
   resources :addresses, only: [:create, :update]
 

@@ -39,4 +39,14 @@ module ApplicationHelper
     end
   end
 
+  def current_maker
+    if current_user
+      if current_user.maker
+        return current_user.maker
+      end
+    end
+  end
+
+  
+
 end

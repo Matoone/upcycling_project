@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :items, only: [:show]
   resources :orders
 
+  resources :addresses, only: [:create, :update]
 
 end

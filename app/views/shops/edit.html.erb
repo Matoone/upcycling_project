@@ -1,0 +1,26 @@
+<%= render 'jumbotron_show'%>
+
+<div class="container">
+  <div class="row justify-content-center mb-4 mt-3">
+    <h1>Nos articles</h1>
+  </div>
+  <div class="row justify-content-center mb-5 mt-1" >
+    <%= link_to "Ajouter des produits à ma boutique", shop_path, :class=>"fas fa-store" %>
+  </div>
+  <div class="row mb-3">
+    <% @shop.items.each do |item| %>
+    <div class="col-3 text-center" id="grid-col-<%= item.id %>">
+      <h6 class="small-container"><%= item.name %></h6>
+      <%= render 'items/card', item: item %>
+      <div class="column">
+        <button type="button" class="btn btn-success mb-3">Modifier mon produit</button>
+        <h5>Ajuster mon stock</h5>
+        <p><i class="fas fa-minus-square "></i>
+        <%= item.available_quantity %>
+        <i class="fas fa-plus-square "></i> </p>
+        <button type="button" class="btn btn-danger mb-3">Retirer de ma boutique</button>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

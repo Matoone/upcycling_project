@@ -1,6 +1,4 @@
-  <% puts "(" * 200 %>
-  <% puts @shop %>
-  <%= form_with(model: Item.new, url: items_path) do |f| %>
+<%= form_with(model: @item, url: items_path) do |f| %>
           <%= render 'item_details_form', f: f %>
           <%= f.hidden_field :shop_id, :value => @shop.id %>
           

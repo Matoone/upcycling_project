@@ -1,0 +1,19 @@
+<div class="d-flex flex-row justify-content-center">
+<%= button_to cart_path, :method => :patch, :class => "button is-link", params: {operation: "remove"} do %>
+  <span class="icon">
+    <i class="fas fa-minus-square "></i>
+  </span>
+<% end %>
+  <div class="ml-3 mr-3">
+    <%=current_user.customer.cart.add_item(item_id)%>
+  </div>
+  <%= button_to cart_path, :method => :patch, :class => "button is-link", params: {operation: "add"} do %>
+  <span class="icon">
+    <i class="fas fa-plus-square"></i>
+  </span>
+<% end %>
+<div class="ml-3 mr-3">
+    <%=current_user.customer.cart.remove_item(item_id)%>
+  </div>
+</div>
+

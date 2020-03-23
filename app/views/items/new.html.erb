@@ -1,8 +1,14 @@
-  <% puts "(" * 200 %>
-  <% puts @shop %>
-  <%= form_with(model: Item.new, url: items_path, multipart: true) do |f| %>
-    <%= render 'item_details_form', f: f %>
-    <%= f.hidden_field :shop_id, :value => @shop.id %>
+<div class="container h-100 mt-4 mb-4">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+    <h4 class="text-center"> Créer un objet
+    </h4>
+      <%= form_with(model: @item, url: items_path) do |f| %>
+        <%= render 'item_details_form', f: f %>
+        <%= f.hidden_field :shop_id, :value => @shop.id %>
 
-    <%= f.submit "Créer"%>
-  <% end %>
+        <%= f.submit "Créer", class: "btn btn-success"%>
+      <% end %>
+    </div>
+  </div>
+</div>

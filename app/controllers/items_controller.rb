@@ -1,18 +1,22 @@
 class ItemsController < ApplicationController
   def index
-
   end
+
   def new
     @shop_id = params[:shop_id]
     @shop = Shop.find_by(id: @shop_id)
     @item = Item.new(shop: @shop)
   end
+
   def create
     puts "#" * 200
     puts params
-    item_params = params.require(:item).permit(:name, :description, :available_quantity, :price, :shop_id)
+    item_params = params.require(:item).permit(:name, :picture, :description, :available_quantity, :price, :shop_id)
     shop = Shop.find_by(id: item_params[:shop_id].to_i)
     item = Item.new(name: item_params[:name], description: item_params[:description], available_quantity: item_params[:available_quantity].to_i, price: item_params[:price].to_f, shop: shop, category_id: params[:category_id])
+    puts "-" * 30
+    p item.picture.attach(params[:picture])
+    puts "-" * 30
     if item.save
       puts "#" * 200
       puts "Succeeeeeeeeeeeeeeeeeddddddddddddddddddd"

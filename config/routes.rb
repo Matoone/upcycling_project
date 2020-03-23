@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'item_pictures/create'
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -7,7 +8,10 @@ Rails.application.routes.draw do
   resources :shops
   resources :categories
   resources :carts
-  resources :items, only: [:show, :edit, :update, :destroy, :new, :create]
+  resources :items, only: [:show, :edit, :update, :destroy, :new, :create] do
+    resources :picture, only: [:create]
+  end
+
   resources :orders
   resources :makers do
     post 'new_maker_email'

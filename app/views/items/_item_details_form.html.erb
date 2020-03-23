@@ -1,14 +1,19 @@
 <div class="d-flex flex-column bd-highlight mb-3">
-<%= f.label :name, 'Nom de l\'objet'%>
-<%= f.text_field :name, placeholder: "Brosse à dents"  %>
-<%= f.label :description, 'Description de l\'objet' %>
-<%= f.text_area :description, :rows=>"4", placeholder: "Cet objet est fabriqué ...", :maxlength=>"250" %>
-<%= f.label :price, 'Prix de l\'objet'  %>
-<%= f.number_field(:price, in: 0.5..800.0, step: 0.5) %>
-<%= f.label :available_quantity, 'Quantité disponible'  %>
-<%= f.number_field(:available_quantity, in: 1..100, step: 1) %>
-<%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name)) %>
+  <%= f.label :name, 'Nom de l\'objet'%>
+  <%= f.text_field :name, placeholder: "Brosse à dents"  %>
 
+  <%= form_tag item_picture_index_path(params[:shop_id]), multipart: true do %>
+    <%= file_field_tag :picture %>
+    <%= submit_tag "mettre à jour" %>
+  <% end %>
+
+  <%= f.label :description, 'Description de l\'objet' %>
+  <%= f.text_area :description, :rows=>"4", placeholder: "Cet objet est fabriqué ...", :maxlength=>"250" %>
+  <%= f.label :price, 'Prix de l\'objet'  %>
+  <%= f.number_field(:price, in: 0.5..800.0, step: 0.5) %>
+  <%= f.label :available_quantity, 'Quantité disponible'  %>
+  <%= f.number_field(:available_quantity, in: 1..100, step: 1) %>
+  <%= select_tag(:category_id, options_from_collection_for_select(Category.all, :id, :name)) %>
 </div>
 
  <%# day_form.text_area :hatch, cols: "30", rows: "10" %>

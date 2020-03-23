@@ -6,6 +6,8 @@ class Item < ApplicationRecord
   # has_many :orders_items
   # has_many :orders, through: :orders_items
 
+  has_one_attached :picture
+
   def decrement_available_quantity(quantity = 1)
     self.available_quantity -= quantity
     self.save

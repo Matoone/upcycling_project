@@ -1,11 +1,8 @@
 <div class="d-flex flex-column bd-highlight mb-3">
   <%= f.label :name, 'Nom de l\'objet'%>
-  <%= f.text_field :name, placeholder: "Brosse à dents"  %>
+  <%= f.text_field :name, placeholder: "Brosse à dents" %>
 
-  <%= form_tag item_picture_index_path(params[:shop_id]), multipart: true do %>
-    <%= file_field_tag :picture %>
-    <%= submit_tag "mettre à jour" %>
-  <% end %>
+  <%= f.file_field :pictures, multiple: true %>
 
   <%= f.label :description, 'Description de l\'objet' %>
   <%= f.text_area :description, :rows=>"4", placeholder: "Cet objet est fabriqué ...", :maxlength=>"250" %>

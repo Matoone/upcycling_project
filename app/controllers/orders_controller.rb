@@ -15,14 +15,22 @@ class OrdersController < ApplicationController
     puts '#' *120
     puts @amount
     shop_id = params[:shop_id]
-  
-    customer = Stripe::Customer.create({
-      email: current_user.email,
-      source: params[:stripeToken],
-    })
+    registered_customer_id = current_user.customer.stripe_customer_id
+    if registered_customer_id
+      customer_id = registered_customer_id
+    else
+      customer = Stripe::Customer.create({
+        email: current_user.email,
+        source: params[:stripeToken],
+      })
+      current_user.customer.stripe_customer_id = customer.id
+      current_user.customer.save
+      customer_id = customer.id
+    end
+    
     begin
       charge = Stripe::Charge.create({
-        customer: customer.id,
+        customer: customer_id,
         amount: @amount,
         description: 'produits',
         currency: 'eur',
@@ -32,7 +40,8 @@ class OrdersController < ApplicationController
       flash[:error] = e.message
       redirect_to new_order_path
     end
-    order = Order.create(stripe_customer_id: customer.id, customer_id: current_user.customer.id, shop_id: shop_id)
+
+    order = Order.create(stripe_customer_id: customer_id, customer_id: current_user.customer.id, shop_id: shop_id)
     order.add_items_to_order( current_user.customer.cart, shop_id)
     current_user.customer.cart.remove_all_items_from_section(shop_id)
     

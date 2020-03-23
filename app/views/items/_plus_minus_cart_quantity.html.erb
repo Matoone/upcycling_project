@@ -1,16 +1,20 @@
 <div class="d-flex flex-row justify-content-center">
-<%= button_to cart_path, :method => :patch, :class => "button is-link", params: {operation: "remove", item_id: cart_item.item.id } do %>
-  <span class="icon">
-    <i class="fas fa-minus-square "></i>
-  </span>
-<% end %>
+  <% if cart_item.cart_quantity >= 0 %>
+    <%= button_to cart_path, :method => :patch, :class => "button is-link", params: {operation: "remove", item_id: cart_item.item.id } do %>
+      <span class="icon">
+        <i class="fas fa-minus-square "></i>
+      </span>
+    <% end %>
+  <% end %>
   <div class="ml-3 mr-3">
     <%= cart_item.cart_quantity %>
   </div>
-  <%= button_to cart_path, :method => :patch, :class => "button is-link", params: {operation: "add", item_id: cart_item.item.id } do %>
-  <span class="icon">
-    <i class="fas fa-plus-square"></i>
-  </span>
-<% end %>
+  <% if cart_item.cart_quantity < cart_item.item.available_quantity %>
+    <%= button_to cart_path, :method => :patch, :class => "button is-link", params: {operation: "add", item_id: cart_item.item.id } do %>
+      <span class="icon">
+        <i class="fas fa-plus-square"></i>
+      </span>
+    <% end %>
+   <% end %>
 </div>
 

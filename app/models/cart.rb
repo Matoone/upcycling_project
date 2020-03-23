@@ -13,7 +13,7 @@ class Cart < ApplicationRecord
       puts item_in_cart.cart_quantity
     else
       item = Item.find_by(id: item_id)
-      self.items.push(item)
+      self.items.push(item_id)
     end
   end
 

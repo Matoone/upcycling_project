@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find_by(id: params[:id])
     operation = params[:operation]
-
+    puts params
     case operation
     when "add"
       @item.increment_available_quantity
@@ -40,8 +40,15 @@ class ItemsController < ApplicationController
       @item.decrement_available_quantity
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = "Cette action n'existe pas"
-      redirect_back(fallback_location: root_path)
+      update_params = params.require(:item).permit(:name, :description, :available_quantity, :price)
+      update_params[:category_id] = params[:category_id]
+      @item.assign_attributes(update_params)
+      if @item.save
+        flash[:success] = "Votre object a bien été modifié"
+        redirect_to edit_shop_path(@item.shop.id)
+      else
+        redirect_to edit_item_path(@item.id), :flash => { :error => @item.errors.full_messages.join(', ') }
+      end
     end
   end
 

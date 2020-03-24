@@ -1,14 +1,59 @@
-<div class="card item-card-container align-items-center m-3 p-2">
-  <h5 class="card-title m-3"> <%= item.shop.name %> </h5>
-  <%if item.pictures.attached? %>
-    <%= image_tag item.pictures[0], class: "card-img img-responsive" %>
-  <% else %>
-    <%= image_tag "logo.png", class: "card-img img-responsive w-75" %>
-  <% end %>
-
+<%# <div class="card item-card-container m-3 p-2 rounded-lg">
+   <div class="img-wrapper">
+      <%if item.pictures.attached? 
+        <%= image_tag item.pictures[0], class: "card-img-top img-fluid w-100 rounded mx-auto d-block" 
+      <% else 
+        <%= image_tag "logo.png", class: "card-img-top img-fluid w-100 rounded mx-auto d-block" 
+      <% end 
+        <div class="bg-primary text-white mt-3"> <h5><%= item.shop.name </h5> </div>
+    </div>
+ 
   <div class="card-body">
-  <h6 class="card-title"> <%= item.name %> </h6>
-  <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary"%>
-  <p class="card-text text-muted mt-3"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></p>
+    <h6 class="card-title"> <%= item.name </h6>
+    <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary"
+    <p class="card-text text-muted mt-3"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") </p>
   </div>
-</div>
+</div> %>
+
+
+<%# <div class="card">
+    <div class="img-wrapper">
+        <img class="card-img-top" src="images/mytopimage.png"/>
+        <div class="img-overlay"> <h2>Text Over Image</h2> </div>
+    </div>
+    <div class="card-body">
+        <h2 class="card-title">My Card</h2>
+        <p class="card-text">My Card Text</p>
+    </div>
+</div> %>
+
+ <%# <div class="view overlay">
+    <img src="https://mdbootstrap.com/img/Photos/Others/forest-sm.jpg" class="img-fluid " alt="smaple image">
+    <div class="mask flex-center rgba-red-strong">
+      <p class="white-text">Strong overlay</p>
+    </div>
+  </div> %>
+
+    <div class="card">
+      <div class="image">
+          <%if item.pictures.attached? %>
+          <%= image_tag item.pictures[0], class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
+        <% else %>
+          <%= image_tag "logo.png", class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
+        <% end %>
+          <h1 class="card-title text-white"> <%= item.name %> </h1>
+          
+      </div>
+      <div class="bg-primary text-white sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
+      <div class="details">
+        <div class="center">
+          <h6 class="card-title"> <%= item.name %> </h6>
+          <div class="description-content text-center p-2">
+            <%= item.description %>
+          </div>
+          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary mt-3"%>
+          <p class="card-text text-muted"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></p>
+          <div class="bg-primary text-white sticked-bottom p-2"> <h5><%= item.shop.name %></h5> </div>
+        </div>
+      </div>
+    </div>

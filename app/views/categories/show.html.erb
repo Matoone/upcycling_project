@@ -2,10 +2,12 @@
   <h1><%= @category.name %></h1>
 </div>
 <div class="container card-custom-container">
-  <div class="row row-cols-1 row-cols-md-4 justify-content-center">
+  <div class="row row-cols-1 row-cols-md-3 justify-content-center">
     <% @category.items.each do |item| %>
      <% if !item.is_archived %>
+     <div class="text-center" id="grid-col-<%= item.id %>">
       <%= render 'items/card', item: item %>
+      </div>
      <% end %> 
     <% end %>
   </div>

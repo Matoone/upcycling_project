@@ -1,33 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light pt-3 d-flex flex-column">
+<nav class="navbar navbar-expand-lg navbar-light">
+  <a class="navbar-brand">
   <div class="navbar-logo">
     <%= link_to root_path do %>
-      <%= image_tag "logo.png", class: "logo" %>
+      <%= image_tag "logo.png", class: "logo nav-item" %>
     <% end %>
   </div>
-
-  <div class="collapse navbar-collapse vw-100 d-flex justify-content-between pr-4 pl-3">
-    <ul class="navbar-nav mr-auto">
-     <%# <li class="nav-item">
-        <%= link_to "Nos créateurs", edit_user_registration_path,  :class=>"nav-link" 
-      </li> %>
-   
-    <% if user_signed_in? && current_maker %>
-      <% if current_maker.shop %>
-        <li>
-          <%= link_to "Page d'administration du shop", edit_shop_path(current_maker.shop.id), :class=>"nav-link"%>
-        </li>
-      <% end %>
+  </a>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+    <li class="m-1">
+    </li>
+    <li class="m-1">
+    </li>
+    <% returnAllCategories.each do |category| %>
+      <%= render 'layouts/categories', category: category %>
     <% end %>
+    
     </ul>
+    <li class="nav-link">
+      <a class="nav-item">
+        <%= link_to "Nos créateur", edit_user_registration_path, :class=>"btn btn-primary"%>
+      </a>
+    </li>
+  </div>
 
     <div class="dropdown p-1">
       <ul class="navbar-nav mr-auto d-flex align-items-center">
       <% if user_signed_in? %>
       <li class="m-1">
-          
-        <%= link_to "Panier", cart_path(current_user.customer.cart), :class=>"btn btn-outline-info cart" %> 
-         <%# fas fa-shopping-cart  %>
-          
+        <button class="btn btn-outline nav-link" type="button">
+        <%= link_to "", cart_path(current_user.customer.cart), :class=>"fas fa-shopping-cart fa-2x nav-link loggedin" %> 
+        </button> 
       </li>
        <% end %>
       <li class="m-1">
@@ -36,21 +40,33 @@
         <% if user_signed_in? %>
         <li class="m-1">
           </li>
-         <a>
-         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
-        </a>
-        <li class="m-1">
-          </li>
           <li class="m-1">
-          </li>
-          <a>
-          <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"btn btn-danger" %>
-          </a>
+    </li>
+
+          <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
+        </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item">
+              <%= link_to "Mon profil", edit_user_registration_path, :class=>"nav-link" %>
+            </a>
+            <a class="dropdown-item">
+              <% if user_signed_in? && current_maker %>
+                <% if current_maker.shop %>
+                    <%= link_to "Mon shop", edit_shop_path(current_maker.shop.id), :class=>"nav-link"%>
+                <% end %>
+              <% end %>
+            </a>
+            <a  class="dropdown-item">
+              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"nav-link" %>
+            </a>
+          </div>
+
          <% else %>
         <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
         </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
             <a  class="dropdown-item">
               <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link" %>
             </a>
@@ -62,11 +78,4 @@
       </ul>
     </div>
   </div>
-
-  <div class="container mt-4">
-    <% returnAllCategories.each do |category| %>
-      <%= render 'layouts/categories', category: category %>
-    <% end %>
-  </div>
-
 </nav>

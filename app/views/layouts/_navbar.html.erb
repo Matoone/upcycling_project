@@ -13,14 +13,14 @@
     <li class="m-1">
     </li>
     <% returnAllCategories.each do |category| %>
-      <%= render 'layouts/categories', category: category %>
+      <%= render 'layouts/categories_navbar', category: category %>
     <% end %>
     
     </ul>
     <li class="nav-link">
-      <a class="nav-item">
+      <h1 class="nav-item">
         <%= link_to "Nos créateur", edit_user_registration_path, :class=>"btn btn-primary"%>
-      </a>
+      </h1>
     </li>
   </div>
 

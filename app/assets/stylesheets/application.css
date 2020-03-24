@@ -28,6 +28,7 @@
   height: 500px;
   background: #000;
   z-index: 1;
+  margin: 20px;
 }
 .card .image {
   width: 100%;
@@ -109,7 +110,11 @@
 }
 
 .description-content {
-  height: 100px;
+  height: 110px;
   
   overflow: hidden;
+}
+
+body {
+  background-color: beige;
 }

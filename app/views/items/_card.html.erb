@@ -44,16 +44,16 @@
           <h1 class="card-title text-white"> <%= item.name %> </h1>
           
       </div>
-      <div class="bg-primary text-white mt-3 sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
+      <div class="bg-primary text-white sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
       <div class="details">
         <div class="center">
           <h6 class="card-title"> <%= item.name %> </h6>
-          <div class="description-content text-center mb-3">
+          <div class="description-content text-center p-2">
             <%= item.description %>
           </div>
-          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary"%>
-          <p class="card-text text-muted mt-3"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></p>
-          <div class="bg-primary text-white mt-3 sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
+          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary mt-3"%>
+          <p class="card-text text-muted"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></p>
+          <div class="bg-primary text-white sticked-bottom p-2"> <h5><%= item.shop.name %></h5> </div>
         </div>
       </div>
     </div>

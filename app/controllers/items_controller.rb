@@ -28,18 +28,11 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find_by(id: params[:id])
-    puts "-" * 30
-    puts "Ok"
-    puts "-" * 30
   end
 
   def update
     @item = Item.find_by(id: params[:id])
     operation = params[:operation]
-    puts "-" * 30
-    puts params
-    puts "Yeah"
-    puts "-" * 30
 
     case operation
     when "add"

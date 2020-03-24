@@ -50,13 +50,24 @@
 
 #footer-color {
   background-color: #14ca61;
-  color: #F8F8FF 
+  color: #F8F8FF;
+  font-size: 1em
 }
 
-a:link {
+.underline {
+  text-decoration: underline;
+}
+
+.text-white {
   color: #F8F8FF
 }
 
-a:visited {
-  color: #F8F8FF
+.container-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.full-title {
+  max-width: 200px;
 }

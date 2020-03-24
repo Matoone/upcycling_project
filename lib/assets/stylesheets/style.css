@@ -33,6 +33,14 @@
   text-align: center;
 }
 
+.pictures-items-lg {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
 /*------ CAROUSEL ------*/
 
 .carousel-inner img {

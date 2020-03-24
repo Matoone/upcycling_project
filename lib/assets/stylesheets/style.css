@@ -1,14 +1,16 @@
 /*------- NAVBAR ------*/
 
-.navbar-logo {
-  position: absolute;
-  left: 50%;
-  transform: translatex(-50%);
+.navbar {
+  background-color:#EFEFEF;
+}
+
+.navbar-logo:hover {
+ color: #14ca61;
 }
 
 .logo{
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
 }
 
 .nav-item {
@@ -25,6 +27,10 @@
   color: black;
 }
 
+#dropdownMenuButton {
+  margin-right: 20px;
+}
+
 /*----- CONTAINERS -----*/
 
 .item-card-container {
@@ -33,17 +39,19 @@
   text-align: center;
 }
 
-/*------ CAROUSEL ------*/
-
-.carousel-inner img {
-  margin: auto;
-}
-
-/*JUMBOTRON*/
+/*-----JUMBOTRON-----*/
 
 .jumbotron {
-  background-image: url("../../../app/assets/images/image2.jpg");
-  background-size: cover;
+  background-image: url('/app/assets/images/image2.png') no-repeat center center;;
+  height: 88vh;
+}
+
+body {
+  background-color: rgb(247, 247, 247);
+}
+
+.princip {
+  font-family: 'lato';
 }
 
 /*------ FOOTER ------*/
@@ -70,4 +78,10 @@
 
 .full-title {
   max-width: 200px;
+}
+
+.container-jumbo {
+  text-align: center;
+  font-size: 40px;
+  margin: 200px 400px 0px 400px;
 }

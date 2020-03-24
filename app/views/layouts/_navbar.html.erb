@@ -1,11 +1,10 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  <a class="navbar-brand">
+  
   <div class="navbar-logo">
     <%= link_to root_path do %>
       <%= image_tag "logo.png", class: "logo nav-item" %>
     <% end %>
   </div>
-  </a>
   
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav">
@@ -44,8 +43,8 @@
     </li>
 
           <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-         <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
-        </button>
+            <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
+          </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item">
               <%= link_to "Mon profil", edit_user_registration_path, :class=>"nav-link" %>
@@ -63,7 +62,7 @@
           </div>
 
          <% else %>
-        <button class="btn btn-outline dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
         </button>
           <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">

@@ -23,12 +23,13 @@
   background-color: transparent;
 }
 
+
 .cart {
   color: black;
 }
 
 #dropdownMenuButton {
-  margin-right: 50px;
+  margin-right: 20px;
 }
 
 /*----- CONTAINERS -----*/
@@ -42,8 +43,8 @@
 /*-----JUMBOTRON-----*/
 
 .jumbotron {
-  background-image: url("/app/assets/images/image2.jpg") no-repeat center center;;
-  height: 85vh;
+  background-image: url('/app/assets/images/image2.png') no-repeat center center;;
+  height: 88vh;
 }
 
 body {

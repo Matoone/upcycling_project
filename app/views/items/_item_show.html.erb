@@ -15,13 +15,13 @@
         <%else%>
           <div class="carousel-item active"> <!-- show the first stored image as the first image to show -->
             <div class="pictures-items-lg">
-              <%= image_tag "#{rand(5)}.jpg", class: "w-100" %>
+              <%= image_tag "#{rand(6)}.jpg", class: "w-100" %>
             </div>
           </div>
           <% 3.times do %> <!-- add the rest of the images to the carrouselles -->
             <div class="carousel-item"> <!-- show the first stored image as the first image to show -->
               <div class="pictures-items-lg">
-                <%= image_tag "#{rand(5)}.jpg", class: "w-100" %>
+                <%= image_tag "#{rand(6)}.jpg", class: "w-100" %>
               </div>
             </div>
           <% end %>

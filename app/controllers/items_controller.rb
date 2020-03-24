@@ -28,12 +28,19 @@ class ItemsController < ApplicationController
 
   def edit
     @item = Item.find_by(id: params[:id])
+    puts "-" * 30
+    puts "Ok"
+    puts "-" * 30
   end
 
   def update
     @item = Item.find_by(id: params[:id])
     operation = params[:operation]
+    puts "-" * 30
     puts params
+    puts "Yeah"
+    puts "-" * 30
+
     case operation
     when "add"
       @item.increment_available_quantity
@@ -42,9 +49,15 @@ class ItemsController < ApplicationController
       @item.decrement_available_quantity
       redirect_back(fallback_location: root_path)
     else
-      update_params = params.require(:item).permit(:name, :description, :available_quantity, :price)
+      update_params = params.require(:item).permit(:name, :description, :available_quantity, :price, pictures: [])
       update_params[:category_id] = params[:category_id]
       @item.assign_attributes(update_params)
+      if @item.pictures.attached?
+        @item.pictures.purge
+        @item.pictures.attach(update_params[:pictures])
+      else
+        @item.pictures.attach(update_params[:pictures])
+      end
       if @item.save
         flash[:success] = "Votre object a bien été modifié"
         redirect_to edit_shop_path(@item.shop.id)

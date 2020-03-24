@@ -1,80 +1,49 @@
 <nav class="navbar navbar-expand-lg navbar-light">
-  
   <div class="navbar-logo">
     <%= link_to root_path do %>
       <%= image_tag "logo.png", class: "logo nav-item" %>
     <% end %>
   </div>
-  
   <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-    <li class="m-1">
-    </li>
-    <li class="m-1">
-    </li>
     <% returnAllCategories.each do |category| %>
       <%= render 'layouts/categories_navbar', category: category %>
     <% end %>
-    
-    </ul>
-    <li class="nav-link">
-      <h1 class="nav-item">
-        <%= link_to "Nos créateur", edit_user_registration_path, :class=>"btn btn-primary"%>
-      </h1>
-    </li>
+    <h1 class="nav-item">
+      <%= link_to "Nos créateur", edit_user_registration_path, :class=>"btn btn-primary"%>
+    </h1>
   </div>
-
-    <div class="dropdown p-1">
-      <ul class="navbar-nav mr-auto d-flex align-items-center">
+    <div class="dropdown">
+      <div class="navbar-nav mr-auto d-flex align-items-center">
       <% if user_signed_in? %>
-      <li class="m-1">
+      <div>
         <button class="btn btn-outline nav-link" type="button">
         <%= link_to "", cart_path(current_user.customer.cart), :class=>"fas fa-shopping-cart fa-2x nav-link loggedin" %> 
         </button> 
-      </li>
+      </div>
        <% end %>
-      <li class="m-1">
-
-      </li>
         <% if user_signed_in? %>
-        <li class="m-1">
-          </li>
-          <li class="m-1">
-    </li>
-
           <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">
-              <%= link_to "Mon profil", edit_user_registration_path, :class=>"nav-link" %>
-            </a>
-            <a class="dropdown-item">
-              <% if user_signed_in? && current_maker %>
-                <% if current_maker.shop %>
-                    <%= link_to "Mon shop", edit_shop_path(current_maker.shop.id), :class=>"nav-link"%>
-                <% end %>
+            <%= link_to "Mon profil", edit_user_registration_path, :class=>"nav-link dropdown-item" %>
+            <% if user_signed_in? && current_maker %>
+              <% if current_maker.shop %>
+                <%= link_to "Mon shop", edit_shop_path(current_maker.shop.id), :class=>"nav-link dropdown-item"%>
               <% end %>
-            </a>
-            <a  class="dropdown-item">
-              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"nav-link" %>
-            </a>
+            <% end %>
+              <%= link_to "Déconnexion", destroy_user_session_path, method: :delete, :class=>"nav-link dropdown-item" %>
           </div>
-
          <% else %>
         <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
          <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x" %>
         </button>
           <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
-            <a  class="dropdown-item">
-              <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link" %>
-            </a>
-            <a class="dropdown-item">
-              <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link" %>
-            </a>
+            <%= link_to "Se connecter", new_user_session_path, :class=>"nav-link dropdown-item" %>
+            <%= link_to "S'inscrire", new_user_registration_path, :class=>"nav-link dropdown-item" %>
           </div>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 </nav>

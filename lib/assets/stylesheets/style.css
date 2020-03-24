@@ -45,3 +45,18 @@
   background-image: url("../../../app/assets/images/image2.jpg");
   background-size: cover;
 }
+
+/*------ FOOTER ------*/
+
+#footer-color {
+  background-color: #14ca61;
+  color: #F8F8FF 
+}
+
+a:link {
+  color: #F8F8FF
+}
+
+a:visited {
+  color: #F8F8FF
+}

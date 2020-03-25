@@ -8,6 +8,7 @@
         <div class="card-maker">
           <div class="card-body d-flex align-items-center flex-column">
             <h5 class="card-title"><%= shop.name %></h5>
+             <%= image_tag ("2.jpg"), class: "card-img-top rounded" %>
             <p class="card-text"></p>
             <p class="card-text"><small class="text-muted"> <%= shop.maker.description %></small></p>
             <%= link_to "Voir plus", shop_path(shop.id), :class =>"btn btn-primary" %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_103932) do
+ActiveRecord::Schema.define(version: 2020_03_25_224028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -102,6 +102,9 @@ ActiveRecord::Schema.define(version: 2020_03_23_103932) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email_pro"
+    t.string "website"
+    t.boolean "is_validated?", default: false
     t.index ["user_id"], name: "index_makers_on_user_id"
   end
 
@@ -122,6 +125,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_103932) do
     t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_shipped", default: false
+    t.datetime "ship_date"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["shop_id"], name: "index_orders_on_shop_id"
   end

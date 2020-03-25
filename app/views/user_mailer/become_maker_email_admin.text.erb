@@ -1,8 +1,15 @@
-Salut <%= @infos_user[:first_name] %>, merci pour ta demande !
+<%= @infos_user[:first_name] + " " + @infos_user[:last_name] %> souhaite devenir créat.rice.eur !
 ==========================================================
 
-Tu as fait une demande pour ouvrir un compte artisan sur notre compte avec cet email : <%= @infos_user[:email] %>.
+Voilà ces infos :
+* Prénom :    <%= @infos_user[:maker_id] %>
+* Nom :       <%= @infos_user[:maker_id] %>
+* Adresse :   <%= @infos_user[:maker_id] %>
+* Site web :  <%= @infos_user[:maker_id] %>
 
-Nous tacherons de donner une réponse à ta demande dans les plus brefs délais !
+Description :
+<%= @infos_user[:description] %>
 
-À très vite sur nouveauxdesigns.fr !
+Pour aller valider sa demande <%= link_to("clic ici", maker_validate_maker_url(@infos_user[:user_id])) %>
+
+À très vite.

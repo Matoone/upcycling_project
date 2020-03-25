@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def new
     @cart = Cart.find(params[:cart_id])
     @section_id = params[:section_id]
@@ -47,5 +48,20 @@ class OrdersController < ApplicationController
     
     flash[:success] = "Votre paiement a fonctionné. Vous recevrez un email de confirmation dans les prochaines minutes. Merci pour votre commande!"
     redirect_to root_path
+  end
+
+  def update
+    order = Order.find_by(id: params[:id])
+    case params[:operation]
+    when "shipped"
+      order.is_shipped = true
+      order.ship_date = DateTime.now
+      order.save
+      flash[:success] = "Le statut de la commande est bien passé en envoyé"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:alert] = "L'opération demandée n'existe pas"
+      redirect_back(fallback_location: root_path)
+    end
   end
 end

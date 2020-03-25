@@ -1,4 +1,15 @@
 class ItemsController < ApplicationController
+  include ItemsHelper
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action only: [:edit, :update, :destroy] do
+    maker = Item.find_by(id: params[:id]).shop.maker
+    if !current_user.maker || !maker.is_own_identity(current_user.maker.id)
+      flash[:alert] = "Vous n'êtes pas autorisé à modifier cet objet"
+      redirect_to root_path
+    end
+  end
+  # will have to add check for new and create
+
   def index
   end
 
@@ -24,6 +35,11 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @shop = Item.find_by(id: params[:id])
+
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
   end
 
   def edit

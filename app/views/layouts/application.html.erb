@@ -16,7 +16,7 @@
 
   <%= render 'layouts/navbar'%>
 
-  <div class="container col-6">
+  <div class="d-flex flex-column">
     <% flash.each do |key, value| %>
       <div class="<%= flash_class(key) %>" role="alert">
         <%= value %>

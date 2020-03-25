@@ -1,0 +1,6 @@
+<div class="col-6 container ">
+  <h2 class= "p-4 text-center">Valider le compte artisan</h2>
+
+  <%= button_to "Valider", makers_path, :method => :post, :class => "btn btn-primary btn-lg btn-block", params: {maker_id: @maker.id, operation: "validate"} %>
+
+</div>

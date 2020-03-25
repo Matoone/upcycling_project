@@ -1,4 +1,4 @@
-<div class="container row mt-5 align-items-center">
+<div class="container row mb-5 mt-5 align-items-center">
   <div class="col-sm d-flex align-items-center">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
@@ -13,7 +13,18 @@
             </div>
           <% end %>
         <%else%>
-          <%= image_tag "logo.png", class: "d-flex justify-content-center w-75" %>
+          <div class="carousel-item active"> <!-- show the first stored image as the first image to show -->
+            <div class="pictures-items-lg">
+              <%= image_tag "#{rand(6)}.jpg", class: "w-100" %>
+            </div>
+          </div>
+          <% 3.times do %> <!-- add the rest of the images to the carrouselles -->
+            <div class="carousel-item"> <!-- show the first stored image as the first image to show -->
+              <div class="pictures-items-lg">
+                <%= image_tag "#{rand(6)}.jpg", class: "w-100" %>
+              </div>
+            </div>
+          <% end %>
         <% end %>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -36,7 +47,7 @@
     <div class="d-flex flex-column">
     <p> Quantité : <%= item.available_quantity %> </p>
     <p class="card-text"> Prix : <%= item.price %> € </p>
-    
+
        <% if user_signed_in? %>
       <% if is_item_quantity_sufficient_to_add_another_to_cart(item.id) == true %>
          <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-primary btn-lg btn-block", params: {item_id: item.id, operation: "add"} %>
@@ -51,7 +62,7 @@
         <%= link_to "Voir la page du shop", shop_path(item.shop.id), :class => "btn btn-info"%>
       </div>
     </div>
-   
+
   </div>
 
 </div>

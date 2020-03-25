@@ -1,13 +1,13 @@
 <%# <div class="card item-card-container m-3 p-2 rounded-lg">
    <div class="img-wrapper">
-      <%if item.pictures.attached? 
-        <%= image_tag item.pictures[0], class: "card-img-top img-fluid w-100 rounded mx-auto d-block" 
-      <% else 
-        <%= image_tag "logo.png", class: "card-img-top img-fluid w-100 rounded mx-auto d-block" 
-      <% end 
+      <%if item.pictures.attached?
+        <%= image_tag item.pictures[0], class: "card-img-top img-fluid w-100 rounded mx-auto d-block"
+      <% else
+        <%= image_tag "logo.png", class: "card-img-top img-fluid w-100 rounded mx-auto d-block"
+      <% end
         <div class="bg-primary text-white mt-3"> <h5><%= item.shop.name </h5> </div>
     </div>
- 
+
   <div class="card-body">
     <h6 class="card-title"> <%= item.name </h6>
     <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary"
@@ -39,10 +39,10 @@
           <%if item.pictures.attached? %>
           <%= image_tag item.pictures[0], class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
         <% else %>
-          <%= image_tag "logo.png", class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
+          <%= image_tag "#{rand(5)}.jpg", class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
         <% end %>
           <h1 class="card-title text-white"> <%= item.name %> </h1>
-          
+
       </div>
       <div class="bg-primary text-white sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
       <div class="details">

@@ -8,8 +8,21 @@ class Customer < ApplicationRecord
   # has_many :orders
 
   private
+  
   def create_customer_cart
     cart = Cart.create(customer: self)
     puts "Cart created id #{cart.id}"
   end
+
+  def is_own_identity(customer_id)
+    customer = Customer.find_by(id: customer_id)
+    if !customer
+      return false
+    elsif customer.id != self.id
+      return false
+    else
+      return true
+    end
+  end
+
 end

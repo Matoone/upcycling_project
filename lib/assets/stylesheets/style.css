@@ -20,8 +20,9 @@ body {
 }
 
 .logo{
-  width: 70px;
-  height: 70px;
+  width: 100px;
+  height: 100px;
+  margin-right: 50px;
 }
 
 .nav-item {

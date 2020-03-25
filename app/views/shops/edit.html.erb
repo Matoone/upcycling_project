@@ -1,8 +1,8 @@
 <%= render 'jumbotron_show'%>
-
+<%= render 'shop_stats', shop: @shop %>
 <div class="container">
   <div class="row justify-content-center mb-4 mt-3">
-    <h1>Nos articles</h1>
+    <h1><%= @shop.name %></h1>
   </div>
   <div class="row justify-content-center mb-5 mt-1" >
     <%= link_to "Ajouter un produit à ma boutique", new_item_path(:shop_id => @shop.id), :class=>"fas fa-store" %>

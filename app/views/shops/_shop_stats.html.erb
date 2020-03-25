@@ -1,0 +1,51 @@
+<div class="col-sm">
+  <br>
+  <h1 class="h3 font-weight-normal text-center">Historique des commandes</h1>
+  <br>
+  <div>
+    <% if shop.orders.length <= 0 %>
+    <h2 class="text-center">
+    Personne n'a encore commandé
+    </h2>
+    <% else %>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Référence</th>
+          <th scope="col">Client</th>
+          <th scope="col">Date</th>
+          <th scope="col">Montant</th>
+          <th scope="col">Contenu</th>
+          <th scope="col">Envoi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% shop.orders.to_a.each_with_index do |order, index| %>
+            <tr class="">
+              <td scope="row"><%= order.id %></td>
+              <td> <%= order.customer.address.complete_address %></td>
+              <td> <%= order.created_at.to_formatted_s(:short) %></td>
+              <td><%= order.total %> €</td>
+              <td><%= button_tag('Détails', :type => 'button',:onclick => "javascript:toggleOrderDetails(#{order.id})", :class => "btn btn-info") %></td>
+              <% if !order.is_shipped %>
+              <td> <%= button_to 'Marquer comme envoyé', order_path(order.id), :method => :patch, :class => "btn btn-success", params: { operation: "shipped" } %></td>
+              <% else %>
+              <td> <%= order.ship_date.to_formatted_s(:short) %></td>
+              <% end %>
+            </tr>
+            <tr style="background-color:red"class="is-hidden" id="<%=order.id%>">
+              <% order.order_items.each do |order_item| %>
+                <td>Référence Objet: <%= order_item.item.id %></td>
+                <td>Nom: <%= order_item.item.name %></td>
+                <td>Quantité: <%= order_item.order_quantity  %></td>
+                <td></td>
+                <td></td>
+                <td><%= check_box_tag 'prepared', 'prepared', false %></td>
+              <% end %>
+            </tr>
+        <% end %>
+      </tbody>
+    </table> 
+    <% end %>
+  </div>
+</div>

@@ -35,6 +35,11 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by(id: params[:id])
     @shop = Item.find_by(id: params[:id])
+
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
   end
 
   def edit

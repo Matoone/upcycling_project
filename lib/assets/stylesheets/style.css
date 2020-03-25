@@ -67,6 +67,17 @@ body {
   text-align: center;
 }
 
+
+.pictures-items-lg {
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/*------ CAROUSEL ------*/
+
 /*-----JUMBOTRON-----*/
 
 .jumbotron {
@@ -77,6 +88,7 @@ body {
 body {
   background-color: rgb(247, 247, 247);
 }
+
 
 .princip {
   font-family: 'lato';

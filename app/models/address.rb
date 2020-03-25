@@ -11,4 +11,12 @@ class Address < ApplicationRecord
     self.first_name + " " + self.last_name + " " + self.address_line_1 + " " + " " + self.zip_code + " " + self.city
     # will have to add addrees_line_2 and set default to ""
   end
+
+  def show_field(field_name)
+    if self
+      return self[field_name]
+    else
+      return ""
+    end
+  end
 end

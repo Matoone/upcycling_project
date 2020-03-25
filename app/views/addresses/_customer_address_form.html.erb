@@ -8,15 +8,15 @@
 </div>
 <div class="row">
   <div class="col-6">
-    <%= f.text_field :first_name, class: "form-control" %>
+    <%= f.text_field :first_name, class: "form-control", placeholder: (@user.customer.address.first_name if @user.customer.address) %>
   </div>
   <div class="col-6">
-    <%= f.text_field :last_name, class: "form-control" %>
+    <%= f.text_field :last_name, class: "form-control",  placeholder: (@user.customer.address.last_name if @user.customer.address) %>
   </div>
 </div>
 
 <%= f.label :complément %>
-<%= f.text_field :address_line_1, class: "form-control" %>
+<%= f.text_field :address_line_2, class: "form-control", placeholder: (@user.customer.address.address_line_2 if @user.customer.address) %>
 
 <div class="row">
   <div class="col-3">
@@ -28,10 +28,10 @@
 </div>
 <div class="row">
   <div class="col-3">
-    <%= f.text_field :street_number, class: "form-control" %>
+    <%= f.text_field :street_number, class: "form-control", placeholder: (@user.customer.address.street_number if @user.customer.address) %>
   </div>
   <div class="col-9">
-    <%= f.text_field :address_line_2, class: "form-control" %>
+    <%= f.text_field :address_line_1, class: "form-control", placeholder: (@user.customer.address.address_line_1 if @user.customer.address) %>
   </div>
 </div>
 
@@ -45,10 +45,10 @@
 </div>
 <div class="row">
   <div class="col-6">
-    <%= f.text_field :zip_code, class: "form-control" %>
+    <%= f.text_field :zip_code, class: "form-control", placeholder: (@user.customer.address.zip_code if @user.customer.address) %>
   </div>
   <div class="col-6">
-    <%= f.text_field :city, class: "form-control" %>
+    <%= f.text_field :city, class: "form-control", placeholder: (@user.customer.address.city if @user.customer.address) %>
   </div>
 </div>
 

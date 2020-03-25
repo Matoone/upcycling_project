@@ -1,26 +1,23 @@
 class ItemsController < ApplicationController
   def index
-
   end
+
   def new
     @shop_id = params[:shop_id]
     @shop = Shop.find_by(id: @shop_id)
     @item = Item.new(shop: @shop)
   end
+
   def create
-    puts "#" * 200
-    puts params
-    item_params = params.require(:item).permit(:name, :description, :available_quantity, :price, :shop_id)
+    item_params = params.require(:item).permit(:name, :description, :available_quantity, :price, :shop_id, pictures: [])
     shop = Shop.find_by(id: item_params[:shop_id].to_i)
     item = Item.new(name: item_params[:name], description: item_params[:description], available_quantity: item_params[:available_quantity].to_i, price: item_params[:price].to_f, shop: shop, category_id: params[:category_id])
+    item.pictures.attach(item_params[:pictures])
     if item.save
-      puts "#" * 200
-      puts "Succeeeeeeeeeeeeeeeeeddddddddddddddddddd"
       flash[:success] = "Votre object a bien été créé"
       redirect_to edit_shop_path(shop.id)
     else
-      flash[:alert] = "Vote objet n'a pas pu être créé. Veuillez vérifiez les champs."
-      redirect_back(fallback_location: root_path)
+     redirect_to new_item_path(shop_id: shop.id), :flash => { :error => item.errors.full_messages.join(', ') }
     end
   end
 
@@ -45,8 +42,21 @@ class ItemsController < ApplicationController
       @item.decrement_available_quantity
       redirect_back(fallback_location: root_path)
     else
-      flash[:alert] = "Cette action n'existe pas"
-      redirect_back(fallback_location: root_path)
+      update_params = params.require(:item).permit(:name, :description, :available_quantity, :price, pictures: [])
+      update_params[:category_id] = params[:category_id]
+      @item.assign_attributes(update_params)
+      if @item.pictures.attached?
+        @item.pictures.purge
+        @item.pictures.attach(update_params[:pictures])
+      else
+        @item.pictures.attach(update_params[:pictures])
+      end
+      if @item.save
+        flash[:success] = "Votre object a bien été modifié"
+        redirect_to edit_shop_path(@item.shop.id)
+      else
+        redirect_to edit_item_path(@item.id), :flash => { :error => @item.errors.full_messages.join(', ') }
+      end
     end
   end
 

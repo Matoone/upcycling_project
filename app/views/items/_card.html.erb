@@ -41,11 +41,11 @@
         <% else %>
           <%= image_tag "#{rand(5)}.jpg", class: "card-img-top img-fluid rounded mx-auto d-block" %>
         <% end %>
-           <h3 class="card-title text-white p-2"> <%= item.name %> </h3>
-          
+           <h3 class="card-title text-white p-2 mb-0"> <%= item.name %> </h3>
+          <div class="bg-primary text-white sticked-bottom d-flex align-items-center justify-content-center"> <h5 class="justify-self-center mb-0 align-self-center"><%= item.shop.name %></h5> </div>
 
       </div>
-      <div class="bg-primary text-white sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
+      
       <div class="details p-3 rounded-right">
         <div class="d-flex flex-column justify-content-center">
           <h4 class="card-title"> <%= item.name %> </h4>

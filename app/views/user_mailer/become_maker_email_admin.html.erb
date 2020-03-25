@@ -35,7 +35,9 @@
     </div>
 
     <div class="actions mt-5">
-      Pour accepter sa demande <%= link_to("clic ici", makers_url, method: :create) %>
+      Pour accepter sa demande <%= link_to("clic ici", new_maker_url) %>
+
+      <a href=<%= url_for(controller: 'makers', action: 'new', host: 'http://localhost:3000') %>>test</a>
     </div>
 
   </body>

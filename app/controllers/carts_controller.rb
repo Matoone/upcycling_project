@@ -1,5 +1,13 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!, only: [:update, :show]
+  before_action only: [:show, :update] do
+    customer = Cart.find_by(id: params[:id]).customer
+    if !current_user.customer.is_own_identity(customer.id)
+      flash[:alert] = "Vous n'êtes pas autorisé à accéder à ce panier"
+      redirect_to root_path
+    end
+  end
+  # do we need to add create to this before_action? have to test
   def create
     @user = current_user
     user_cart = Cart.create(customer: @user.customer)

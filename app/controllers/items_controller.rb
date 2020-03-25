@@ -17,7 +17,7 @@ class ItemsController < ApplicationController
       flash[:success] = "Votre object a bien été créé"
       redirect_to edit_shop_path(shop.id)
     else
-     redirect_to new_item_path(shop_id: shop.id), :flash => { :error => @item.errors.full_messages.join(', ') }
+     redirect_to new_item_path(shop_id: shop.id), :flash => { :error => item.errors.full_messages.join(', ') }
     end
   end
 

@@ -1,3 +1,13 @@
+/*------- GENERAL ------*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin: 0 0 200px;
+  /* bottom = footer height */
+  padding-bottom: 25px;
+}
 /*------- NAVBAR ------*/
 
 .navbar {
@@ -54,8 +64,28 @@ body {
   font-family: 'lato';
 }
 
-/*------ FOOTER ------*/
+.jumbotron-category {
+  padding: 2rem 1rem;
+  margin-bottom: 2rem;
+  border-radius: 0.3rem;
+  background: #242134; 
+  background: -webkit-linear-gradient(to right, #9E9AB4, #242134);
+  background: linear-gradient(to right, #9E9AB4, #242134);
+}
+ 
+.hd1{
+    color:#fff;
+}
 
+/*------ FOOTER ------*/
+footer {
+  position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
 #footer-color {
   background-color: #14ca61;
   color: #F8F8FF;
@@ -85,3 +115,6 @@ body {
   font-size: 40px;
   margin: 200px 400px 0px 400px;
 }
+
+
+

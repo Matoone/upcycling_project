@@ -34,26 +34,26 @@
     </div>
   </div> %>
 
-    <div class="card">
-      <div class="image">
+    <div class="card d-flex flex-column mb-3">
+      <div class="image justify-content-between d-flex flex-column">
           <%if item.pictures.attached? %>
-          <%= image_tag item.pictures[0], class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
+          <%= image_tag item.pictures[0], class: "card-img-top rounded" %>
         <% else %>
-          <%= image_tag "logo.png", class: "card-img-top img-fluid w-100 rounded mx-auto d-block" %>
+          <%= image_tag "logo.png", class: "card-img-top img-fluid rounded mx-auto d-block" %>
         <% end %>
-          <h1 class="card-title text-white"> <%= item.name %> </h1>
+           <h3 class="card-title text-white p-2"> <%= item.name %> </h3>
           
       </div>
       <div class="bg-primary text-white sticked-bottom"> <h5><%= item.shop.name %></h5> </div>
-      <div class="details">
-        <div class="center">
-          <h6 class="card-title"> <%= item.name %> </h6>
-          <div class="description-content text-center p-2">
+      <div class="details p-3 rounded-right">
+        <div class="d-flex flex-column justify-content-center">
+          <h4 class="card-title"> <%= item.name %> </h4>
+          <div class="description-content text-center">
             <%= item.description %>
           </div>
-          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary mt-3"%>
-          <p class="card-text text-muted"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></p>
-          <div class="bg-primary text-white sticked-bottom p-2"> <h5><%= item.shop.name %></h5> </div>
+          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary mt-3 btn-lg btn-block"%>
+          <div class="card-text text-muted div-1"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></div>
+          <div class="absolute-bottom rounded p-2"> <%= link_to "#{item.shop.name}", shop_path(item.shop.id), :class => "btn btn-secondary btn-block"%> </div>
         </div>
       </div>
     </div>

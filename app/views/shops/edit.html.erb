@@ -16,11 +16,11 @@
             <%= link_to "Modifier le produit", edit_item_path(item.id), :class => "btn btn-info"%>
             
             <%= render 'items/plus_minus_quantity_available', item: item %>
-            <%= button_to "Archiver cet objet", item_path(item.id), :method => :delete, :class => "btn btn-danger" %>
+            <%= button_to "Archiver cet objet", item_path(item.id), :method => :delete, :class => "btn btn-danger", remote: true %>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
 </div>
-<%# <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-info btn-lg", params: {item_id: item.id, operation: "add"} %>%>
+<%# <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-info btn-lg", params: {item_id: item.id, operation: "add"} %>

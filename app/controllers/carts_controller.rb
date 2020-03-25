@@ -32,5 +32,10 @@ class CartsController < ApplicationController
       flash[:error] = "L'opération n'existe pas."
       redirect_back(fallback_location: root_path)
     end
+
+    respond_to do |format|
+      format.html { }
+      format.js { }      
+    end
   end
 end

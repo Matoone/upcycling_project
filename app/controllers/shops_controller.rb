@@ -18,4 +18,11 @@ class ShopsController < ApplicationController
   def edit
     @shop = Shop.find_by(id: params[:id])
   end
+
+  def delete
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
+  end
 end

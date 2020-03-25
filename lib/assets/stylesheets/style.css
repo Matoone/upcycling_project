@@ -81,17 +81,21 @@ body {
 /*-----JUMBOTRON-----*/
 
 .jumbotron {
-  background-image: url('/app/assets/images/image2.png') no-repeat center center;;
+  background-image: url('0.jpg') no-repeat center center;;
   height: 88vh;
+  display: flex;
+  flex-direction: column;             
+  justify-content: center;
+  align-items: center;
+  padding-top: 400px;
 }
 
 body {
   background-color: rgb(247, 247, 247);
 }
 
-
-.princip {
-  font-family: 'lato';
+.background-image{
+  background-attachment:fixed;
 }
 
 .jumbotron-category {
@@ -138,12 +142,6 @@ footer {
 
 .full-title {
   max-width: 200px;
-}
-
-.container-jumbo {
-  text-align: center;
-  font-size: 40px;
-  margin: 200px 400px 0px 400px;
 }
 
 /*---- ITEM ----*/
@@ -221,7 +219,7 @@ footer {
 }
 
 
-/*------MAKERS-----*/
+/*------SHOPS-CARD-----*/
 
 .d-flex-maker{
   display: flex;

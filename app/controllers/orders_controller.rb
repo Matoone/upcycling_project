@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def new
     @cart = Cart.find(params[:cart_id])
     @section_id = params[:section_id]

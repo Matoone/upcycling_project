@@ -2,14 +2,21 @@ class UserMailer < ApplicationMailer
   default from: 'solunacisv@gmail.com'
 
   def welcome_email(user)
-    #on récupère l'instance user pour ensuite pouvoir la passer à la view en @user
     @user = user
-
-    #on définit une variable @url qu'on utilisera dans la view d’e-mail
     @url  = "http://localhost:3000/users/sign_in"
 
-    # c'est cet appel à mail() qui permet d'envoyer l’e-mail en définissant destinataire et sujet.
     mail(to: @user.email, subject: 'Bienvenue chez nous !')
+  end
+
+  def become_maker_email_admin(params)
+    @infos_user = params
+    @url_create = "http://localhost:3000/makers"
+    mail(to: "solunacisv@gmail.com", subject: 'Nvlle demande de créateur')
+  end
+
+  def become_maker_email_confirmation(params)
+    @infos_user = params
+    mail(to: "solunacisv@gmail.com", subject: 'Votre demande pour devenir créateur')
   end
 
 end

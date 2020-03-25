@@ -48,7 +48,7 @@ puts "Create test users with customer and maker, shop and items..."
   maker_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, maker: user.maker)
 
   10.times do
-    item = Item.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: Faker::Commerce.price(range: 0..70.0), available_quantity: Faker::Number.within(range: 1..10), shop: shop, category: Category.all.sample)
+    item = Item.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: Faker::Commerce.price(range: 1..70.0), available_quantity: Faker::Number.within(range: 1..10), shop: shop, category: Category.all.sample)
   end
 end
 

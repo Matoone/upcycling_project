@@ -1,1 +1,19 @@
-
+<body>
+<br>
+  <h4 class="h3 text-center mt-3 mb-4 ml-3"> Découvrez nos artisans engagés dans une démarche</h4>
+  <h4 class="h3 text-center mt-3 mb-4 ml-3">de développement durable et transparente</h4>
+  <br><hr>
+  <div class="d-flex-maker">
+    <% @shops.each do |shop| %>
+        <div class="card-maker">
+          <div class="card-body d-flex align-items-center flex-column">
+            <h5 class="card-title"><%= shop.name %></h5>
+            <img src="https://unsplash.com/photos/rdLERs3ZGgQ">
+            <p class="card-text"></p>
+            <p class="card-text"><small class="text-muted"> Description</small></p>
+            <%= link_to "Voir plus", shop_path(shop.id), :class =>"btn btn-primary" %>
+          </div>
+      </div>
+    <%end %>
+    </div>
+</body>

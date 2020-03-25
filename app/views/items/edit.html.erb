@@ -1,3 +1,14 @@
-<div>
-  Vue à construire
+<div class="container h-100 mt-4 mb-4">
+  <div class="row h-100 justify-content-center align-items-center">
+    <div class="col-10 col-md-8 col-lg-6">
+    <h4 class="text-center"> Modifier un objet
+    </h4>
+      <%= form_with model: @item do |f| %>
+        <%= render 'item_details_form', f: f %>
+        
+        
+        <%= f.submit "Modifier", class: "btn btn-success"%>
+      <% end %>
+    </div>
+  </div>
 </div>

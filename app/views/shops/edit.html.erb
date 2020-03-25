@@ -7,18 +7,16 @@
   <div class="row justify-content-center mb-5 mt-1" >
     <%= link_to "Ajouter un produit à ma boutique", new_item_path(:shop_id => @shop.id), :class=>"fas fa-store" %>
   </div>
-  <div class="row mb-3">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <% @shop.items.each do |item| %>
       <% if !item.is_archived %>
-        <div class="col-3 text-center" id="grid-col-<%= item.id %>">
-          <h6 class="small-container"><%= item.name %></h6>
+        <div class="text-center justify-content-center d-flex flex-column align-items-center mb-3" id="grid-col-<%= item.id %>">
           <%= render 'items/card', item: item %>
-          <div class="column">
-            <%= link_to "Modifier le produit", edit_item_path(item.id), :class => "btn btn-info mb-3"%>
-            <h5>Ajuster mon stock</h5>
+          <div class="column justify-content-center">
+            <%= link_to "Modifier le produit", edit_item_path(item.id), :class => "btn btn-info"%>
+            
             <%= render 'items/plus_minus_quantity_available', item: item %>
-            <%= button_to "Archiver cet objet", item_path(item.id), :method => :delete, :class => "btn btn-danger mb-3" %>
-          
+            <%= button_to "Archiver cet objet", item_path(item.id), :method => :delete, :class => "btn btn-danger" %>
           </div>
         </div>
       <% end %>

@@ -37,7 +37,7 @@
       <% end %>
       <br><br>
       <p class="h3 mb-3 font-weight-normal text-center">Pas content ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-lg btn-danger btn-block" %></p>
-      <%= link_to "Retour", :back %>
+      
     </div>
 
 
@@ -51,6 +51,7 @@
 
       <% else %> <!-- The address needs to be created and linked to the current_user -->
       <h1 class="h3 mb-3 font-weight-normal text-center">Créer votre adresse de livraison</h1>
+      <br>
         <%= form_with(url: addresses_path, method: "post") do |f| %>
           <%= render 'addresses/customer_address_form', f: f %>
         <% end %>
@@ -58,7 +59,36 @@
     </div>
     <div class="col-sm">
       <br>
-      <h1 class="h3 mb-3 font-weight-normal text-center">Historique de vos commandes passées</h1>
+      <h1 class="h3 font-weight-normal text-center">Historique de vos commandes</h1>
+      <br>
+      <div>
+        <% if current_user.customer.orders.length <= 0 %>
+        <h2 class="text-center">
+        Vous n'avez pas encore fait de commande
+        </h2>
+        <% else %>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Référence</th>
+              <th scope="col">Shop</th>
+              <th scope="col">Date</th>
+              <th scope="col">Montant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% current_user.customer.orders.to_a.each_with_index do |order, index| %>
+                <tr class="">
+                  <td scope="row"><%= order.id %></td>
+                  <td> <%= order.shop.name %></td>
+                  <td> <%= order.created_at.to_formatted_s(:short) %></td>
+                  <td><%= order.total %> €</td>
+                </tr>
+            <% end %>
+          </tbody>
+        </table> 
+        <% end %>
+      </div>
 
     </div>
   </div>

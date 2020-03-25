@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
   belongs_to :user
   has_one :address
   has_one :cart, dependent: :destroy
-  # has_many :orders
+  has_many :orders
 
   def is_own_identity(customer_id)
     if customer_id != self.id

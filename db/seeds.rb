@@ -44,8 +44,8 @@ puts "Create test users with customer and maker, shop and items..."
   user = User.create!(email: Faker::Internet.email, password: "password", password_confirmation: "password")
   user_maker = Maker.create!(user: user, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) )
   shop =  Shop.create!(maker: user.maker, name: Faker::Commerce.department(max: 3))
-  customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
-  maker_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, maker: user.maker)
+  customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
+  maker_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, maker: user.maker)
 
   10.times do
     item = Item.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: Faker::Commerce.price(range: 1..70.0), available_quantity: Faker::Number.within(range: 1..10), shop: shop, category: Category.all.sample)
@@ -57,7 +57,7 @@ end
 puts "Create test users with customer only..."
 5.times do |i|
   user = User.create!(email: Faker::Internet.email, password: "password", password_confirmation: "password")
-  customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
+  customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
   user.save
 end
 
@@ -84,8 +84,8 @@ puts "Create test user: you can connect with him with email: test@maker.com and 
 user = User.create!(email: "test@maker.com", password: "thatshard", password_confirmation: "thatshard")
 user_maker = Maker.create!(user: user, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) )
 shop =  Shop.create!(maker: user.maker, name: Faker::Commerce.department(max: 3))
-customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
-maker_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , street_number: Faker::Number.within(range: 1..150).to_s, address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, maker: user.maker)
+customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)
+maker_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, maker: user.maker)
 10.times do
   item = Item.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: Faker::Commerce.price(range: 0..70.0), available_quantity: Faker::Number.within(range: 1..10), shop: shop, category: Category.all.sample)
 end

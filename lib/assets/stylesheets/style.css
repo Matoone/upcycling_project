@@ -198,6 +198,7 @@ footer {
   transform: translateX(70%);/*100%*/
 }
 .card .details {
+ 
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -216,12 +217,11 @@ footer {
   transform: perspective(2000px) rotateY(0deg);
 }
 .card .details .center {
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   background: #fff;
   position: absolute;
   top: 50%;
- 
   transform: translateY(-50%);
 }
 
@@ -229,6 +229,13 @@ footer {
   max-height: 40%;
   text-align: center;
   overflow: hidden;
+}
+
+.card-title-item {
+  max-height: 15%;
+  overflow: hidden;
+  margin-top: 6px;
+  line-height: 24px;
 }
 
 /*---- SHOP EDIT ----*/

@@ -1,4 +1,10 @@
 class ItemsController < ApplicationController
+  include ItemsHelper
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action only: [:new, :create, :edit, :update, :destroy] do
+    is_current_user_authorized_to_be_here(params[:id])
+  end
+
   def index
   end
 

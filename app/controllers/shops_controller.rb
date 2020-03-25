@@ -12,7 +12,6 @@ class ShopsController < ApplicationController
 
   def show
     @shop = Shop.find_by(id: params[:id])
-   
   end
 
   def edit
@@ -24,5 +23,9 @@ class ShopsController < ApplicationController
       format.html { }
       format.js { }
     end
+  end
+  
+  def index
+    @shops = Shop.all
   end
 end

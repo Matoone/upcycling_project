@@ -10,4 +10,5 @@ class MakersController < ApplicationController
     flash[:success] = "Votre email a bien été envoyé."
     redirect_to new_maker_path
   end
+
 end

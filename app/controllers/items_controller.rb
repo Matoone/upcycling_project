@@ -45,10 +45,10 @@ class ItemsController < ApplicationController
       update_params = params.require(:item).permit(:name, :description, :available_quantity, :price, pictures: [])
       update_params[:category_id] = params[:category_id]
       @item.assign_attributes(update_params)
-      if @item.pictures.attached?
+      if @item.pictures.attached? && update_params[:pictures]
         @item.pictures.purge
         @item.pictures.attach(update_params[:pictures])
-      else
+      elsif update_params[:pictures]
         @item.pictures.attach(update_params[:pictures])
       end
       if @item.save

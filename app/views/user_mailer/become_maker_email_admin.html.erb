@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1><%= @infos_user[:first_name] + " " + @infos_user[:last_name] %> souhaite devenir créat.rice.eur !</h1>
+    <p>Voilà ces infos :</p>
+
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Site web</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"><%= @infos_user[:user_id] %></th>
+            <td><%= @infos_user[:first_name] %></td>
+            <td><%= @infos_user[:last_name] %></td>
+            <td><%= @infos_user[:address_line_2] + ", " + @infos_user[:address_line_1] + " " + @infos_user[:zip_code] + ", " + @infos_user[:city] %></td>
+          </tr>
+          <td><%= @infos_user[:website] %></td>
+          <tr>
+            <th scope="row">Description</th>
+            <td colspan="4"><%= label_tag @infos_user[:description] %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="actions mt-5">
+      <p>Pour aller valider sa demande <%= link_to("clic ici", maker_validate_maker_url(@infos_user[:user_id]), params: @infos_user[:first_name]) %>
+    </p>
+    </div>
+  </body>
+</html>

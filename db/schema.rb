@@ -101,6 +101,9 @@ ActiveRecord::Schema.define(version: 2020_03_25_230259) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email_pro"
+    t.string "website"
+    t.boolean "is_validated", default: false
     t.index ["user_id"], name: "index_makers_on_user_id"
   end
 

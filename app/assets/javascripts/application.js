@@ -10,11 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require leaflet
-//= require maps
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require leaflet
+//= require tangram
+//= require maps
 //= require_tree .
 
 toggleOrderDetails = (orderId) => {

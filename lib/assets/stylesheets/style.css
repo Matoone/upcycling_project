@@ -14,7 +14,7 @@ body {
 .navbar {
   /* background-color:#EFEFEF; */
   background: url('wood.jpg') repeat top left;
- 
+
   z-index: 9999;
 }
 
@@ -74,7 +74,7 @@ body {
 .navbar-toggler {
   border: none;
 }
-/* 
+/*
 #cart-navbar-icon:hover {
   color:  #14ca61;
 } */
@@ -100,7 +100,7 @@ body {
 /*------ MAP ------*/
 
 #mapid {
-  height: 180px;
+  height: 80vh;
 }
 
 /*-----JUMBOTRON-----*/

@@ -22,6 +22,7 @@ class ShopsController < ApplicationController
     respond_to do |format|
       format.html { }
       format.js { }
+      puts ('#'*60)
     end
   end
   

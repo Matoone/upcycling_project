@@ -1,3 +1,8 @@
+<% if @user.customer.address%>
+<div class="alert alert-success">L'adresse enregistrée est valide</div>
+<% else %>
+<div class="alert alert-warning">L'adresse n'est pas valide. Veuillez la compléter et cliquer sur valider l'adresse.</div>
+<% end %>
 <div class="row">
   <div class="col-6">
     <%= f.label :prénom %>
@@ -6,32 +11,25 @@
     <%= f.label :nom %>
   </div>
 </div>
-<div class="row">
+<div class="row mb-3">
   <div class="col-6">
-    <%= f.text_field :first_name, class: "form-control", placeholder: (@user.customer.address.first_name if @user.customer.address) %>
+    <%= f.text_field :first_name, class: "form-control", value: (@user.customer.address.first_name if @user.customer.address) %>
   </div>
   <div class="col-6">
-    <%= f.text_field :last_name, class: "form-control",  placeholder: (@user.customer.address.last_name if @user.customer.address) %>
+    <%= f.text_field :last_name, class: "form-control",  value: (@user.customer.address.last_name if @user.customer.address) %>
   </div>
 </div>
 
-<%= f.label :complément %>
-<%= f.text_field :address_line_2, class: "form-control", placeholder: (@user.customer.address.address_line_2 if @user.customer.address) %>
+
 
 <div class="row">
-  <div class="col-3">
-    <%= f.label :n° %>
-  </div>
-  <div class="col-9">
+  <div class="col-12">
     <%= f.label :adresse %>
   </div>
 </div>
-<div class="row">
-  <div class="col-3">
-    <%= f.text_field :street_number, class: "form-control", placeholder: (@user.customer.address.street_number if @user.customer.address) %>
-  </div>
-  <div class="col-9">
-    <%= f.text_field :address_line_1, class: "form-control", placeholder: (@user.customer.address.address_line_1 if @user.customer.address) %>
+<div class="row mb-3">
+  <div class="col-12">
+    <%= f.text_field :address_line_1, class: "form-control", value: (@user.customer.address.address_line_1 if @user.customer.address) %>
   </div>
 </div>
 
@@ -43,15 +41,16 @@
     <%= f.label :ville %>
   </div>
 </div>
-<div class="row">
+<div class="row mb-3">
   <div class="col-6">
-    <%= f.text_field :zip_code, class: "form-control", placeholder: (@user.customer.address.zip_code if @user.customer.address) %>
+    <%= f.text_field :zip_code, class: "form-control", value: (@user.customer.address.zip_code if @user.customer.address) %>
   </div>
   <div class="col-6">
-    <%= f.text_field :city, class: "form-control", placeholder: (@user.customer.address.city if @user.customer.address) %>
+    <%= f.text_field :city, class: "form-control", value: (@user.customer.address.city if @user.customer.address) %>
   </div>
 </div>
-
+<%= f.label :address_line_2, 'Complément d\'adresse (optionnel)' %>
+<%= f.text_field :address_line_2, class: "form-control", value: (@user.customer.address.address_line_2 if @user.customer.address) %>
 <div class="actions mt-5">
-  <%= f.submit "Valider", class: "btn btn-lg btn-info btn-block" %>
+  <%= f.submit "Valider l'adresse", class: "btn btn-lg btn-info btn-block" %>
 </div>

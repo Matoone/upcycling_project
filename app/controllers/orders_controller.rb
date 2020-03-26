@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create]
+  before_action :authenticate_user!, only: [:new, :create, :update]
   def new
+    if !current_user.customer.address
+      flash[:warning] = "Vous devez remplir votre adresse avant de pouvoir passer une commande"
+      redirect_to edit_user_registration_path
+    end
     @cart = Cart.find(params[:cart_id])
     @section_id = params[:section_id]
     @items_total_price = @cart.return_section_total_price(@section_id)

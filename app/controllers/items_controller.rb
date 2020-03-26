@@ -53,10 +53,17 @@ class ItemsController < ApplicationController
     case operation
     when "add"
       @item.increment_available_quantity
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path) }
+        format.js { render 'increment.js.erb'}
+      end
+      
     when "remove"
       @item.decrement_available_quantity
-      redirect_back(fallback_location: root_path)
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_path) }
+        format.js { render 'decrement.js.erb'}
+      end
     else
       update_params = params.require(:item).permit(:name, :description, :available_quantity, :price, pictures: [])
       update_params[:category_id] = params[:category_id]
@@ -80,7 +87,13 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     @item.is_archived = true
     @item.save
-    flash[:success] = "Votre objet a bien été archivé."
-    redirect_back(fallback_location: root_path)
+    
+    respond_to do |format|
+      format.html {
+        flash[:success] = "Votre objet a bien été archivé." 
+        redirect_back(fallback_location: root_path) }
+      format.js { render 'delete_item.js.erb'}
+    end
+    
   end
 end

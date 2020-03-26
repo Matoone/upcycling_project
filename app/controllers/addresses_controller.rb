@@ -1,7 +1,7 @@
 class AddressesController < ApplicationController
   def create
     permitted_params = address_permitted_params
-    @address = Address.new(first_name: permitted_params[:first_name], last_name: permitted_params[:last_name], street_number: permitted_params[:street_number], address_line_1: permitted_params[:address_line_1], address_line_2: permitted_params[:address_line_2], zip_code: permitted_params[:zip_code], city: permitted_params[:city], customer: current_user.customer)
+    @address = Address.new(first_name: permitted_params[:first_name], last_name: permitted_params[:last_name], address_line_1: permitted_params[:address_line_1], address_line_2: permitted_params[:address_line_2], zip_code: permitted_params[:zip_code], city: permitted_params[:city], customer: current_user.customer)
     if @address.save
       flash[:success] = "Votre adresse a bien été créée."
       redirect_to edit_user_registration_path
@@ -27,6 +27,6 @@ class AddressesController < ApplicationController
   private
 
   def address_permitted_params
-    params.permit(:first_name, :last_name, :street_number, :address_line_1, :address_line_2, :zip_code, :city)
+    params.permit(:first_name, :last_name,:address_line_1, :address_line_2, :zip_code, :city)
   end
 end

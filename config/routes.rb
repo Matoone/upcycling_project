@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resources :orders
   resources :makers do
-    post 'new_maker_email'
+    get 'validate_maker', to: 'makers#validate_maker'
   end
 
   resources :addresses, only: [:create, :update]

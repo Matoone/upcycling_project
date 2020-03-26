@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_23_103932) do
+ActiveRecord::Schema.define(version: 2020_03_25_230259) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_03_23_103932) do
   create_table "addresses", force: :cascade do |t|
     t.bigint "maker_id"
     t.bigint "customer_id"
-    t.string "street_number"
     t.string "address_line_1"
     t.string "address_line_2"
     t.string "zip_code"
@@ -122,6 +121,8 @@ ActiveRecord::Schema.define(version: 2020_03_23_103932) do
     t.bigint "customer_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_shipped", default: false
+    t.datetime "ship_date"
     t.index ["customer_id"], name: "index_orders_on_customer_id"
     t.index ["shop_id"], name: "index_orders_on_shop_id"
   end

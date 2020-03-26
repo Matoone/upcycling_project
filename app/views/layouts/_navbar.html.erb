@@ -8,7 +8,7 @@
   
   <div class="navbar-collapse justify-content-center"  id="categoriesSection">
     <div class="navbar-nav d-flex flex-sm-column flex-lg-row collapse">
-    <div class="justify-content-center shadow letter-spacing text-uppercase category-cell nav-item">
+    <div class="justify-content-center shadow letter-spacing text-uppercase category-cell nav-item pl-3 pr-3">
       <%= link_to "Nos créateurs", shops_path, :class=>"nav-link"%>
     </div>
       <% returnAllCategories.each do |category| %>
@@ -19,7 +19,7 @@
   <div class="dropdown">
     <div class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <%= link_to "", cart_path(current_user.customer.cart), :class=>"fas fa-shopping-cart fa-2x nav-link loggedin" %> 
+        <%= link_to "", cart_path(current_user.customer.cart), :class=>"fas fa-shopping-cart fa-2x nav-link loggedin", :style => "color:#1e185f; font-size:28px;" %> 
         <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
         </button>

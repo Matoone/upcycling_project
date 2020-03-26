@@ -20,10 +20,10 @@ Then go in your browser to adress 'localhost:3000'
 
 ## Usage
 
-For test:
+For test (this user is maker and admin. That means he can allow maker status demands.):
 
-  - email: test@maker.com
-  - password: thatshard
+  - email: test@yopmail.com
+  - password: azerty
 
 
 ## Contributing
@@ -35,7 +35,7 @@ Please make sure to update tests as appropriate.
 - Charlie CARPENE   Lead Sound-FX Designer                        https://github.com/charlie-carpene
 - Matthieu DEGRE    Lead After-Effects                            https://github.com/Matoone
 - Wejdi HEDIA       Lead Discombobulator Programmer               https://github.com/whedia
-- Jérémy MARC       Lead DIV Creative Innovator © Container&Co  https://github.com/JeremyMarc232
+- Jérémy MARC       Lead DIV Creative Innovator © Container&Co    https://github.com/JeremyMarc232
 
 
 ## License

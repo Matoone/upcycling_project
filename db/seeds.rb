@@ -80,8 +80,8 @@ Customer.all.each do |customer|
 end
 
 
-puts "Create test user: you can connect with him with email: test@maker.com and password: thatshard"
-user = User.create!(email: "test@maker.com", password: "thatshard", password_confirmation: "thatshard")
+puts "Create test user: you can connect with him with email: test@yopmail.com and password: azerty"
+user = User.create!(email: "test@yopmail.com", password: "azerty", password_confirmation: "azerty", is_admin: true)
 user_maker = Maker.create!(user: user, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false) )
 shop =  Shop.create!(maker: user.maker, name: Faker::Commerce.department(max: 3))
 customer_address = Address.create!(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name , address_line_1: "rue " + Faker::Address.street_name, zip_code: "69100", city: Faker::Address.city, customer: user.customer)

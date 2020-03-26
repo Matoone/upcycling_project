@@ -12,7 +12,7 @@ class UserMailer < ApplicationMailer
     @infos_user = params
 
     @url_create = "http://localhost:3000/makers"
-    mail(to: "solunacisv@gmail.com", subject: 'Nvlle demande de créateur')
+    mail(to: "test@yopmail.com", subject: 'Nouvelle demande de créateur')
   end
 
   def become_maker_email_confirmation(params)

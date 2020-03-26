@@ -12,14 +12,13 @@ class MakersController < ApplicationController
       maker = Maker.new(user: current_user, description: maker_permitted_params[:description], email_pro: maker_permitted_params[:email_pro], website: maker_permitted_params[:website])
       maker_address = Address.new(first_name: maker_permitted_params[:first_name], last_name: maker_permitted_params[:last_name], address_line_1: maker_permitted_params[:address_line_1], zip_code: maker_permitted_params[:zip_code], city: maker_permitted_params[:city], maker: maker)
 
-      if maker.save && maker_address.save
+      if maker_address.save && maker.save 
         UserMailer.become_maker_email_admin(maker_permitted_params).deliver_now
         UserMailer.become_maker_email_confirmation(maker_permitted_params).deliver_now
         flash[:success] = "Votre email a bien été envoyé. Un mail de confirmation vous a été envoyé."
         redirect_to edit_user_registration_path
       else
-        flash[:alert] = "Un problème est survenu, veuillez réessayer plus tard."
-        redirect_to edit_user_registration_path
+        redirect_to new_maker_path, :flash => { :error => maker.errors.full_messages.join(', ') + '   ' +  maker_address.errors.full_messages.join(', ')}
       end
 
     when "validate"
@@ -27,9 +26,21 @@ class MakersController < ApplicationController
       @maker.is_validated = true
       if @maker.save
         flash[:success] = "Le compte a bien été validé."
+        # brancher le mailer pour envoyer un mail d'acceptation
+        redirect_to root_path
       else
-        flash[:alert] = "Un problème est survenu, veuillez réessayer plus tard."
+        redirect_to root_path, :flash => { :error => @maker.errors.full_messages.join(', ') }
       end
+    
+    when "deny"
+      @maker = Maker.find_by(id: params[:maker_id])
+      @maker.destroy
+      # Brancher le mailer pour envoyer un mail de refus
+      flash[:success] = "Le compte a bien été refusé."
+      redirect_to root_path
+      
+    else
+      flash[:error] = "Cette oprération n'existe pas."
       redirect_to root_path
     end
   end
@@ -45,3 +56,4 @@ class MakersController < ApplicationController
   end
 
 end
+

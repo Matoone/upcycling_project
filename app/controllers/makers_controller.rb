@@ -1,4 +1,5 @@
 class MakersController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create, :validate_maker]
   def new
     @user = current_user
   end
@@ -46,6 +47,10 @@ class MakersController < ApplicationController
   end
 
   def validate_maker
+    if !current_user.is_admin
+      flash[:error] = "Vous n'êtes pas autorisé à accéder à cette section. Si vous êtes administrateur, veuillez vous connecter et re-cliquez sur le lien qui va a amené ici."
+      redirect_to root_path
+    end
     @maker = User.find_by(id: params[:maker_id]).maker
   end
 

@@ -10,13 +10,14 @@ class UserMailer < ApplicationMailer
 
   def become_maker_email_admin(params)
     @infos_user = params
+
     @url_create = "http://localhost:3000/makers"
     mail(to: "solunacisv@gmail.com", subject: 'Nvlle demande de créateur')
   end
 
   def become_maker_email_confirmation(params)
     @infos_user = params
-    mail(to: "solunacisv@gmail.com", subject: 'Votre demande pour devenir créateur')
+    mail(to: @infos_user[:email_pro], subject: 'Votre demande pour devenir créateur')
   end
 
 end

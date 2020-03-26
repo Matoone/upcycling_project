@@ -1,11 +1,11 @@
-<%= @infos_user[:first_name] + " " + @infos_user[:last_name] %> souhaite devenir créat.rice.eur !
+Une nouvelle personne souhaite devenir Artisan !
 ==========================================================
 
 Voilà ces infos :
-* Prénom :    <%= @infos_user[:maker_id] %>
-* Nom :       <%= @infos_user[:maker_id] %>
-* Adresse :   <%= @infos_user[:maker_id] %>
-* Site web :  <%= @infos_user[:maker_id] %>
+* Prénom :    <%= @infos_user[:first_name] %>
+* Nom :       <%= @infos_user[:last_name] %>
+* Adresse :   <%= @infos_user[:address_line_1] + ", " + @infos_user[:zip_code] + " " + @infos_user[:city] %>
+* Site web :  <%= @infos_user[:website] %>
 
 Description :
 <%= @infos_user[:description] %>

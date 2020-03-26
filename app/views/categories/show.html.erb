@@ -1,7 +1,7 @@
 <%= render 'jumbotron_category', category: @category %>
 
 <div class="container">
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+  <div class="d-flex-maker">
     <% @category.items.each do |item| %>
      <% if !item.is_archived %>
      <div class="text-center col justify-content-center d-flex" id="grid-col-<%= item.id %>">

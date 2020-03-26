@@ -19,7 +19,12 @@
 				<h4 class="underline footer-font-size pt-2"> A propos </h4>
 				<ul class="list-unstyled">
           <li>
-            <%= link_to "Devenir artisan ?", new_maker_path, :class=> "text-white" %>
+            <% if user_signed_in? %>
+              <%= link_to "Devenir artisan ?", new_maker_path, :class=> "text-white" %>
+              <% else %>
+              <%= link_to "Devenir artisan ?", new_user_session_path, :class=> "text-white" %>
+            <% end %>
+            
           </li>
           <li>
             <a class="text-white" href="#!">CGV</a>

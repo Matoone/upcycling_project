@@ -29,4 +29,33 @@ class ShopsController < ApplicationController
   def index
     @shops = Shop.all
   end
+
+  def create
+    maker = current_user.maker
+    name = params[:name]
+    if maker
+      @shop = Shop.new(maker: maker, name: name)
+      if @shop.save
+        flash[:success] = "Votre magasin a bien été créé! Vous pouvez accéder à son espace via le menu de la navbar."
+        redirect_to root_path
+      else
+        redirect_to new_shop_path, :flash => { :error => @shop.errors.full_messages.join(', ')}
+      end
+    else
+      flash[:danger] = "La référence de cet artisan n'existe pas."
+      redirect_to root_path
+    end
+    
+  end
+
+  def new
+    
+    maker = current_user.maker
+    if maker
+     return true
+    else
+      flash[:error] = "La référence de cet artisan n'existe pas"
+      redirect_to root_path
+    end
+  end
 end

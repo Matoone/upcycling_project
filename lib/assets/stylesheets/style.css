@@ -14,7 +14,8 @@ body {
 .navbar {
   /* background-color:#EFEFEF; */
   background: url('wood.jpg') repeat top left;
-  opacity:0.9;
+ 
+  z-index: 9999;
 }
 
 .logo {
@@ -30,15 +31,10 @@ body {
 .loggedin {
   color: #14ca61;
   text-decoration: none;
-  background-color: transparent;
 }
 
 .cart {
   color: black;
-}
-
-#dropdownMenuButton {
-  margin-right: 20px;
 }
 
 /* .shadow {
@@ -78,6 +74,11 @@ body {
 .navbar-toggler {
   border: none;
 }
+/* 
+#cart-navbar-icon:hover {
+  color:  #14ca61;
+} */
+
 
 /*----- CONTAINERS -----*/
 
@@ -168,10 +169,15 @@ footer {
   color: #F8F8FF
 }
 
+.footer-font-size {
+  font-size: 1.35rem;
+}
+
 .container-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  text-align: center;
 }
 
 .full-title {

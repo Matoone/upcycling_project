@@ -92,7 +92,9 @@
 
     </div>
   </div>
+    <% if !current_user.maker %>
     <div class="actions mt-5">  
       <%= link_to "Devenir artisan ?", new_maker_path, :class=>"btn btn-lg btn-info btn-block" %>
     </div>
+    <% end %>
 </div>

@@ -104,7 +104,7 @@ ActiveRecord::Schema.define(version: 2020_03_25_224028) do
     t.datetime "updated_at", null: false
     t.string "email_pro"
     t.string "website"
-    t.boolean "is_validated?", default: false
+    t.boolean "is_validated", default: false
     t.index ["user_id"], name: "index_makers_on_user_id"
   end
 

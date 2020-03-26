@@ -21,8 +21,8 @@ class MakersController < ApplicationController
       end
     when "validate"
       @maker = Maker.find_by(id: params[:maker_id])
-      @maker.is_validated? = true
-      if maker.save
+      @maker.is_validated = true
+      if @maker.save
         flash[:success] = "Le compte a bien été validé."
       else
         flash[:alert] = "Un problème est survenu, veuillez réessayer plus tard."

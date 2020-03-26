@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light justify-content-between">
+<nav class="navbar navbar-project navbar-expand-lg navbar-light justify-content-between">
   <div id="navbar-logo" class="navbar-logo" onmouseover="toggleLogo('in')" onmouseleave="toggleLogo('out')">
     <%= link_to root_path do %>
       <%= image_tag "logo.png", class: "logo nav-item" %>
       <%= image_tag "logo-alt.png", class: "logo nav-item is-hidden" %>
     <% end %>
   </div>
-  
+
   <div class="navbar-collapse justify-content-center"  id="categoriesSection">
     <div class="navbar-nav d-flex flex-sm-column flex-lg-row collapse">
     <div class="justify-content-center shadow letter-spacing text-uppercase category-cell nav-item pl-3 pr-3">
@@ -19,7 +19,7 @@
   <div class="dropdown">
     <div class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <%= link_to "", cart_path(current_user.customer.cart), :class=>"fas fa-shopping-cart fa-2x nav-link", :style => "color:#1e185f; font-size:28px;", :id => "cart-navbar-icon" %> 
+        <%= link_to "", cart_path(current_user.customer.cart), :class=>"fas fa-shopping-cart fa-2x nav-link", :style => "color:#1e185f; font-size:28px;", :id => "cart-navbar-icon" %>
         <button class="btn btn-outline dropdown-toggle nav-link" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <%= link_to "", edit_user_registration_path, :class=>"fas fa-user fa-2x loggedin" %>
         </button>
@@ -44,14 +44,9 @@
         </div>
       <% end %>
     </div>
-   
+
   </div>
    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#categoriesSection" aria-controls="categoriesSection" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fa fa-navicon" style="color:#1e185f; font-size:28px;"></i>
   </button>
-  </div>
 </nav>
-
-
-
-

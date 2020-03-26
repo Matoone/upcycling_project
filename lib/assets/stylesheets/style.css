@@ -103,12 +103,16 @@ body {
 
 .background-image-overlay {
   position: absolute;
-  align-self: flex;
-  padding-top: 200px;
   display: flex;
-  flex-direction: column;             
- 
- 
+  flex-direction: column; 
+  padding-top: 200px;
+}
+
+.background-button-overlay{
+  position: absolute;
+  display: flex;
+  flex-direction: column; 
+  padding-top: 320px;
 }
 
 .jumbotron-category {

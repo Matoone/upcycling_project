@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light justify-content-between">
-  <div class="navbar-logo">
+  <div id="navbar-logo" class="navbar-logo" onmouseover="toggleLogo('in')" onmouseleave="toggleLogo('out')">
     <%= link_to root_path do %>
       <%= image_tag "logo.png", class: "logo nav-item" %>
+      <%= image_tag "logo-alt.png", class: "logo nav-item is-hidden" %>
     <% end %>
   </div>
   

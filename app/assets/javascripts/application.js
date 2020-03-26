@@ -17,3 +17,16 @@
 toggleOrderDetails = (orderId) => {
   document.getElementById(orderId).classList.toggle("is-hidden")
 }
+toggleLogo = (action) => {
+  if (action === "in") {
+    document.getElementById("navbar-logo").firstElementChild.firstElementChild.classList.add("is-hidden")
+    document.getElementById("navbar-logo").firstElementChild.lastElementChild.classList.remove("is-hidden")
+  }
+  else {
+    document.getElementById("navbar-logo").firstElementChild.firstElementChild.classList.remove("is-hidden")
+    document.getElementById("navbar-logo").firstElementChild.lastElementChild.classList.add("is-hidden")
+  }
+    
+  
+  
+}

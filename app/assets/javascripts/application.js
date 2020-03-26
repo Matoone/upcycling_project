@@ -10,10 +10,13 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require leaflet
+//= require maps
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
 toggleOrderDetails = (orderId) => {
   document.getElementById(orderId).classList.toggle("is-hidden")
 }
@@ -26,7 +29,7 @@ toggleLogo = (action) => {
     document.getElementById("navbar-logo").firstElementChild.firstElementChild.classList.remove("is-hidden")
     document.getElementById("navbar-logo").firstElementChild.lastElementChild.classList.add("is-hidden")
   }
-    
-  
-  
+
+
+
 }

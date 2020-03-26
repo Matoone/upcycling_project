@@ -1,0 +1,3 @@
+element = document.getElementById("quantity-<%=@item.id%>")
+console.log(element)
+element.textContent = (parseInt(element.textContent) +1).toString()

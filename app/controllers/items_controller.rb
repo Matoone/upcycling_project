@@ -87,7 +87,13 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
     @item.is_archived = true
     @item.save
-    flash[:success] = "Votre objet a bien été archivé."
-    redirect_back(fallback_location: root_path)
+    
+    respond_to do |format|
+      format.html {
+        flash[:success] = "Votre objet a bien été archivé." 
+        redirect_back(fallback_location: root_path) }
+      format.js { render 'delete_item.js.erb'}
+    end
+    
   end
 end

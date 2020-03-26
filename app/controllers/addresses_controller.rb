@@ -24,6 +24,32 @@ class AddressesController < ApplicationController
     end
   end
 
+  def index
+    @addresses = Address.all
+
+    respond_to do |format|
+      format.html
+      format.json do
+        geojson = @addresses.map do |address|
+          {
+            type: 'Feature',
+            geometry: {
+              type: 'Point',
+              coordinates: [address.longitude, address.latitude],
+            },
+            properties: {
+              name: address.maker.first_name,
+              popupContent: render_to_string(partial: 'addresses/address.html', locals: { address: address } ),
+              address: address.address_line_1
+            }
+          }
+        end
+
+        render json: geojson
+      end
+    end
+  end
+
   private
 
   def address_permitted_params

@@ -7,6 +7,9 @@ class Address < ApplicationRecord
   belongs_to :maker, optional: true
   belongs_to :customer, optional: true
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
   def complete_address
     self.first_name + " " + self.last_name + " " + self.address_line_1 + " " + self.address_line_2 || "" + " " + self.zip_code + " " + self.city
     # will have to add addrees_line_2 and set default to ""

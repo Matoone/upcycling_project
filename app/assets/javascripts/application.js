@@ -13,7 +13,11 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require leaflet
+//= require tangram
+//= require maps
 //= require_tree .
+
 toggleOrderDetails = (orderId) => {
   document.getElementById(orderId).classList.toggle("is-hidden")
 }

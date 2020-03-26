@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     get 'validate_maker', to: 'makers#validate_maker'
   end
 
-  resources :addresses, only: [:create, :update]
+  resources :addresses, only: [:create, :update, :index]
 
 end

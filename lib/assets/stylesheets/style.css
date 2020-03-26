@@ -147,10 +147,15 @@ footer {
   color: #F8F8FF
 }
 
+.footer-font-size {
+  font-size: 1.35rem;
+}
+
 .container-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  text-align: center;
 }
 
 .full-title {

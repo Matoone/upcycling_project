@@ -26,7 +26,7 @@ toggleLogo = (action) => {
     document.getElementById("navbar-logo").firstElementChild.firstElementChild.classList.remove("is-hidden")
     document.getElementById("navbar-logo").firstElementChild.lastElementChild.classList.add("is-hidden")
   }
-    
-  
-  
+
+
+
 }

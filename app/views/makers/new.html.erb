@@ -66,6 +66,7 @@
   <%= f.text_area :description, class: "form-control" %>
 
   <%= f.hidden_field :user_id, :value => @user.id %>
+  <%= f.hidden_field :operation, :value => 'create' %>
 
   <div class="actions mt-5">
     <%= f.submit "Valider", class: "btn btn-lg btn-info btn-block" %>

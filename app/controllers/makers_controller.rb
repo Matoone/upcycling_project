@@ -4,10 +4,10 @@ class MakersController < ApplicationController
   end
 
   def create
-    p params[:operation]
+    operation = params[:operation]
 
     case operation
-    when create
+    when "create"
       maker = Maker.new(user: current_user, description: maker_permitted_params[:description], email_pro: maker_permitted_params[:email_pro],website: maker_permitted_params[:website])
       maker_address = Address.new(first_name: maker_permitted_params[:first_name], last_name: maker_permitted_params[:last_name], street_number: maker_permitted_params[:street_number], address_line_1: maker_permitted_params[:address_line_1], zip_code: maker_permitted_params[:zip_code], city: maker_permitted_params[:city], maker: maker)
 
@@ -19,12 +19,15 @@ class MakersController < ApplicationController
         flash[:alert] = "Un problème est survenu, veuillez réessayer plus tard."
         redirect_to edit_user_registration_path
       end
-    when validate
-      puts "-" * 30
-      puts "yeah"
-      puts "-" * 30
+    when "validate"
+      @maker = Maker.find_by(id: params[:maker_id])
+      @maker.is_validated? = true
+      if maker.save
+        flash[:success] = "Le compte a bien été validé."
+      else
+        flash[:alert] = "Un problème est survenu, veuillez réessayer plus tard."
+      end
       redirect_to root_path
-
     end
   end
 

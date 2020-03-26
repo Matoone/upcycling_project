@@ -1,0 +1,5 @@
+<h1>Créer un shop</h1>
+<%= form_with(model: @shop, url: shops_path) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.submit "Créer mon shop", class: "btn btn-success"%>
+<% end %>

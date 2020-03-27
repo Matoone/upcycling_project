@@ -97,7 +97,11 @@ body {
   overflow: hidden;
 }
 
-/*------ CAROUSEL ------*/
+/*------ MAP ------*/
+
+#mapid {
+  height: 80vh;
+}
 
 /*-----JUMBOTRON-----*/
 
@@ -125,21 +129,19 @@ body {
 .background-image-overlay {
   position: absolute;
   display: flex;
-<<<<<<< HEAD
-  flex-direction: column;
-
-
-=======
   flex-direction: column; 
   padding-top: 240px;
 }
 
 .background-button-overlay{
-  position: absolute;
+
   display: flex;
-  flex-direction: column; 
-  padding-top: 350px;
->>>>>>> 38536e3a4990a69ad30c27cf05e044200a0df074
+  flex-direction: column;
+  align-items: center;
+  
+}
+#getData {
+  width: 20em;
 }
 
 .jumbotron-category {

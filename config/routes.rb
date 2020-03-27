@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root 'static_pages#index'
-
+  resources :geolocs, only: [:index]
   resources :shops
   resources :categories
   resources :carts
@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     get 'validate_maker', to: 'makers#validate_maker'
   end
 
-  resources :addresses, only: [:create, :update]
+  resources :addresses, only: [:create, :update, :index]
 
 end

@@ -1,17 +1,81 @@
 <div class="jumbotron1">
   <img src="https://images.unsplash.com/photo-1500829243541-74b677fecc30?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1355&q=80" class="background-image" alt="...">
   <div class="background-image-overlay">
-  <h3 class="jumbotron-title">Contribuez à la consomation responsable durable locale</h3> 
+    <h3 class="jumbotron-title">Contribuez à la consomation responsable durable locale</h3>
+    <div class="background-button-overlay">
+      <a class="btn btn-success btn-lg" role="button" id="getData">VOIR NOS ARTISANS</a>
+    </div>
+  </div>
 </div>
-<div class="background-button-overlay">
-  <a href="#map" class="btn btn-success btn-lg">VOIR NOS ARTISANS</a>
 
+
+<div id="mapid" style="position: relative; outline: none;" class="leaflet-container leaflet-retina leaflet-fade-anim leaflet-grab leaflet-touch-drag" tabindex="0">
 </div>
-</div>
+ 
 
 <br><br><br><br><br><br><br><br><hr><br>
 
-<%= render 'main_div'%>
+  <%= render 'main_div'%>
+
+ <script>
+     window.onload = function () {
+    var mymap = L.map('mapid').setView([45.7435927, 4.8232209], 12)
+    const associatonMarker = L.marker([45.7435927, 4.8232209]).addTo(mymap).bindPopup("L'atelier des nouveaux designs").openPopup().bindTooltip("Boutique d’art et d’artisanat à Lyon, gérante de ce merveilleux site ;)")
+
+  L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+    maxZoom: 18,
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: "<%= ENV['MAP_TOKEN'] %>",
+  }).addTo(mymap);
+
+
+   $(document).ready(function(){
+     const bindUserPosition = (position) => {
+       
+       const marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Ma position").openPopup()
+       mymap.flyTo([position.coords.latitude, position.coords.longitude], 14)
+       
+       location.hash = '#mapid'
+     }
+     let defaultPosition = { latitude: 45.7435927, longitude: 4.8232209 } // Default position is the associaton position
+     $('#getData').click(function(){
+       if(navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(bindUserPosition);
+        } else {
+          bindUserPosition(defaultPosition.latitude, defaultPosition.longitude)
+        }
+        
+     })
+
+     
+
+        $.ajax({
+    url: "/geolocs",
+    type:"GET",
+    dataType: "json",
+    success: function(result) {
+      
+      console.log(result)
+      const parsedResult = result
+      parsedResult.forEach(element => {
+        const marker = L.marker([element.latitude, element.longitude]).addTo(mymap).bindPopup(element.shop_name + ' ' + '<a href="/shops/' + element.shop_id + '">Lien vers le shop</a>').bindTooltip("quick description")
+
+            
+      })
+    },
+    error: function(error) {
+      console.log(`Error ${error}`)
+    }
+  })
+    })
+
+}
+  </script>
 
 
 

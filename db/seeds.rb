@@ -90,6 +90,11 @@ maker_address = Address.create!(first_name: Faker::Name.first_name, last_name: F
   item = Item.create!(name: Faker::Commerce.product_name, description: Faker::Lorem.paragraph_by_chars(number: 256, supplemental: false), price: Faker::Commerce.price(range: 0..70.0), available_quantity: Faker::Number.within(range: 1..10), shop: shop, category: Category.all.sample)
 end
 
+Maker.all.each do |maker|
+  maker.is_validated = true
+  maker.save
+end
+
 # puts "Create fake order"
 
 #   Order.create!(stripe_customer_id: Faker::Code.imei, customer_id: Customer.all.last.id, shop_id: user_1.maker.shop.id)

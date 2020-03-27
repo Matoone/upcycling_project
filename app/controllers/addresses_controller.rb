@@ -4,6 +4,8 @@ class AddressesController < ApplicationController
     @address = Address.new(first_name: permitted_params[:first_name], last_name: permitted_params[:last_name], address_line_1: permitted_params[:address_line_1], address_line_2: permitted_params[:address_line_2], zip_code: permitted_params[:zip_code], city: permitted_params[:city], customer: current_user.customer)
     if @address.save
       flash[:success] = "Votre adresse a bien été créée."
+      puts "#"*300
+      puts @address.geoloc_address
       redirect_to edit_user_registration_path
     else
       redirect_to edit_user_registration_path, :flash => { :error => @address.errors.full_messages.join(', ')}
@@ -24,6 +26,7 @@ class AddressesController < ApplicationController
     end
   end
 
+ 
   private
 
   def address_permitted_params

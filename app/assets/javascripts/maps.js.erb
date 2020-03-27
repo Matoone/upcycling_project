@@ -11,4 +11,9 @@ window.onload = function () {
     zoomOffset: -1,
     accessToken: "<%= ENV['MAP_TOKEN'] %>",
   }).addTo(mymap);
+
+  var marker = L.marker([<%= User.all.last.customer.address.latitude %>, <%= User.all.last.customer.address.longitude %>]).addTo(mymap);
+
+
+
 }

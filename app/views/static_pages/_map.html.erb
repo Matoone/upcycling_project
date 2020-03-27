@@ -1,0 +1,26 @@
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.4.2/mapbox-gl-geocoder.css" type="text/css"/>
+
+<!-- Promise polyfill script required to use Mapbox GL Geocoder in IE 11 -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script>
+
+<div id='mapid'></div>
+<script>
+  mapboxgl.accessToken = '<%= ENV['MAP_TOKEN'] %>';
+  var map = new mapboxgl.Map({
+    container: 'mapid',
+    center: [1.719, 46.711],
+    zoom: 5,
+    style: 'mapbox://styles/mapbox/light-v10'
+  });
+
+<% @makers.each do |maker| %>
+  <% if maker.address.longitude.present? && maker.address.latitude.present? %>
+    console.log(<%= maker.address.longitude %>);
+    var marker = new mapboxgl.Marker().setLngLat([<%= maker.address.longitude %>, <%= maker.address.latitude %>]).addTo(map);
+  <% end %>
+<% end %>
+
+  map.addControl(new mapboxgl.NavigationControl());
+</script>

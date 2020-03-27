@@ -41,8 +41,8 @@
         <% else %>
           <%= image_tag "#{rand(5)}.jpg", class: "card-img-top img-fluid rounded mx-auto d-block" %>
         <% end %>
-           <h3 class="card-title text-white p-1 mb-0"> <%= item.name %> </h3>
-          <div class="bg-primary text-white sticked-bottom d-flex align-items-center justify-content-center"> <h5 class="justify-self-center mb-0 align-self-center"><%= item.shop.name %></h5> </div>
+           <h3 class="card-title text-black p-2 mb-0"> <%= item.name %> </h3>
+          <div class="bg-white text-black sticked-bottom d-flex align-items-center justify-content-center"> <h5 class="justify-self-center mb-0 align-self-center"><%= item.shop.name %></h5> </div>
 
       </div>
       
@@ -52,9 +52,9 @@
           <div class="description-content text-center">
             <%= item.description %>
           </div>
-          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-primary btn-lg btn-block"%>
-          <div class="card-text text-muted div-1 mt-0 mb-0"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></div>
-          <div class="absolute-bottom rounded p-1"> <%= link_to "#{item.shop.name}", shop_path(item.shop.id), :class => "btn btn-secondary btn-block"%> </div>
+          <%= link_to "Détails", item_path(item.id), :class=>"btn btn-success mt-3 btn-lg btn-block"%>
+          <div class="card-text text-muted div-1"><%= number_to_currency(item.price, :unit => "€ ", separator: ",") %></div>
+          <div class="absolute-bottom rounded p-2"> <%= link_to "#{item.shop.name}", shop_path(item.shop.id), :class => "btn btn-secondary btn-block"%> </div>
         </div>
       </div>
     </div>

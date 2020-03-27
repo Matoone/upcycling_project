@@ -48,7 +48,7 @@
     <p> Quantité : <%= item.available_quantity %> </p>
     <p class="card-text"> Prix : <%= item.price %> € </p>
 
-       <% if user_signed_in? %>
+      <% if user_signed_in? %>
       <% if is_item_quantity_sufficient_to_add_another_to_cart(item.id) == true %>
          <%= button_to "Ajouter au panier", cart_path(current_user.customer.cart.id), :method => :put, :class => "btn btn-primary btn-lg btn-block", params: {item_id: item.id, operation: "add"}, remote: true %>
       <% else %>
@@ -57,8 +57,10 @@
       <% else %>
       <%= link_to "Se connecter pour ajouter au panier", new_user_registration_path, :class => "btn btn-primary btn-lg btn-block" %>
       <% end %>
-      <div class="d-flex flex-row align-items-stretch">
+      <br>
+      <div class="d-flex flex-row align-items-center">
         <%= link_to "Revenir à la catégorie", category_path(item.category.id), :class => "btn btn-info"%>
+        <br>
         <%= link_to "Voir la page du shop", shop_path(item.shop.id), :class => "btn btn-info"%>
       </div>
     </div>

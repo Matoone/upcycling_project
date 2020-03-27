@@ -28,8 +28,11 @@
 
    $(document).ready(function(){
      const bindUserPosition = (position) => {
+       
        const marker = L.marker([position.coords.latitude, position.coords.longitude]).addTo(mymap).bindPopup("Ma position").openPopup()
        mymap.flyTo([position.coords.latitude, position.coords.longitude], 14)
+       
+       location.hash = '#mapid'
      }
      let defaultPosition = { latitude: 45.7435927, longitude: 4.8232209 } // Default position is the associaton position
      $('#getData').click(function(){
@@ -38,7 +41,10 @@
         } else {
           bindUserPosition(defaultPosition.latitude, defaultPosition.longitude)
         }
+        
      })
+
+     
 
         $.ajax({
     url: "/geolocs",
